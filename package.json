@@ -66,7 +66,7 @@
     "web3modal": "^1.9.12",
     "ws": "^8.13.0",
     "yaml-loader": "^0.8.0",
-    "yup": "^0.32.11"
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@types/classnames": "^2.3.1",
