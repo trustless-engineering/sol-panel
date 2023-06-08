@@ -43,6 +43,16 @@ Make sure to copy `./docs/.env.example` to `.env` and change the values appropri
 
 Contributions from the community are welcome. If you're interested in contributing, please reach out in our [Discord](https://discord.gg/xRRKucEMzz).
 
+## Sponsors
+
+SOL Panel wouldn't be possible without the massive support we receive from the community. The following organizations are official sponsors of SOL Panel:
+
+<center>
+<a href="https://www.latitude.sh"><img src="docs/sponsors/latitudesh-logotype-dark.svg" height="75"></a>
+<br />
+<h2>Primary Infrastructure Provider</h2>
+</center>
+
 ## License
 
 SOL Panel is licensed under the terms of the Apache License 2.0. For more information, please see the [LICENSE](LICENSE) file.
