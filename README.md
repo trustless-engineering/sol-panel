@@ -47,11 +47,7 @@ Contributions from the community are welcome. If you're interested in contributi
 
 SOL Panel wouldn't be possible without the massive support we receive from the community. The following organizations are official sponsors of SOL Panel:
 
-<center>
 <a href="https://www.latitude.sh"><img src="docs/sponsors/latitudesh-logotype-dark.svg" height="75"></a>
-<br />
-<h2>Primary Infrastructure Provider</h2>
-</center>
 
 ## License
 
