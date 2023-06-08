@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: sol-panel
+    component: frontend
+spec:
+  selector:
+    matchLabels:
+      app: sol-panel
+      component: frontend
+  template:
+    metadata:
+      labels:
+        app: sol-panel
+        component: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: sol-panel
+          ports:
+            - containerPort: 3000

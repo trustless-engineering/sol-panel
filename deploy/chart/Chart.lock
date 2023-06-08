@@ -1,0 +1,6 @@
+dependencies:
+- name: faktory
+  repository: https://adwerx.github.io/charts
+  version: 0.12.3
+digest: sha256:99fd4d7514e965b98fc66fbd78f2e3b8a35a05d5aa823a171dc42f657a1c41d2
+generated: "2023-05-31T18:14:25.028109-04:00"
