@@ -36,9 +36,9 @@ export default function SolanaOverview({ server }: { server: LatitudeServer }): 
           <div className="card-body">
             <h2 className="card-title text-xl text-primary-content">Solana Details</h2>
             <div className="flex flex-col">
-              <DataElement label="SP Agent" value={`${server.attributes.operating_system.name} ${server.attributes.operating_system.version}`} />
-              <DataElement label="Snapshot" value={`N/A`} />
-              <DataElement label="Ledger" value={`N/A`} />
+              <DataElement label="Version" value="1.14.17" />
+              <DataElement label="Snapshot" value={`Stored`} />
+              <DataElement label="Ledger" value={`Loading...`} />
             </div>
           </div>
         </div>

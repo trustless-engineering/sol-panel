@@ -2,9 +2,9 @@
 
 ## Description
 
-SOL Panel is an open-source composability platform engineered to simplify the orchestration of data pipelines from diverse sources, with a primary focus on Solana.
-SOL Panel empowers users to build APIs, webhooks, and event streams with ease using both official plugins and those provided by our community.
-This combination of flexibility and power gives users the tools needed to efficiently extract, process, analyze, and manage their blockchain data.
+SOL Panel is an open-source composability platform designed to simplify the creation and orchestration of data pipelines from Solana.
+
+> NOTE: SOL Panel is in it's infancy! Some of the documentation is for very near-future state as we ramp up the project. If something doesn't work quite right, we encourage you to join our [discord](https://discord.gg/xRRKucEMzz) and ask for help!
 
 ## Features
 
@@ -37,7 +37,13 @@ yarn
 
 ## Running
 
-Make sure to copy `./docs/.env.example` to `.env` and change the values appropriately!
+Make sure to copy `./docs/.env.example` to `.env` and change the values appropriately.
+
+```bash
+yarn start && open http://localhost:3000
+```
+
+Once started, you can set up an RPC node to start streaming `blockSubscribe` messages to your ingestion pipelines (coming soon)
 
 ## Contributing
 
@@ -47,7 +53,16 @@ Contributions from the community are welcome. If you're interested in contributi
 
 SOL Panel wouldn't be possible without the massive support we receive from the community. The following organizations are official sponsors of SOL Panel:
 
-<a href="https://www.latitude.sh"><img src="docs/sponsors/latitudesh-logotype-dark.svg" height="75"></a>
+<center style="border: 1px solid black; padding:5px;">
+<a href="https://www.latitude.sh">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./docs/sponsors/latitudesh-logotype-light.svg">
+  <img src="./docs/sponsors/latitudesh-logotype-dark.svg" width="350">
+</picture>
+</a>
+<br />
+<small>Latitude.sh provides globally distributed bare-metal servers you can deploy in under 10 minutes, prorated to the second.
+</center>
 
 ## License
 

@@ -36,9 +36,9 @@ export default function AgentOverview({ server }: { server: LatitudeServer }): R
           <div className="card-body">
             <h2 className="card-title text-xl text-primary-content">SP-Agent Details</h2>
             <div className="flex flex-col">
-              <DataElement label="SP Agent" value={`${server.attributes.operating_system.name} ${server.attributes.operating_system.version}`} />
-              <DataElement label="Snapshot" value={`N/A`} />
-              <DataElement label="Ledger" value={`N/A`} />
+              <DataElement label="Version" value={`v1.0.6-next.6`} />
+              <DataElement label="Latency" value={`0.6ms`} />
+              <DataElement label="Logs" value={`Streaming...`} />
             </div>
           </div>
         </div>
