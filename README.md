@@ -67,11 +67,9 @@ SOL Panel wouldn't be possible without the massive support we receive from the c
               <img src="./docs/sponsors/latitudesh-logotype-dark.svg" width="350">
             </picture>
          </a>
-         <br />
-         <small>Latitude.sh provides globally distributed bare-metal servers you can deploy in under 10 minutes, prorated to the second.</small>
       </center>
     </td>
-    <td></td>
+    <td>Latitude.sh provides globally distributed bare-metal servers you can deploy in under 10 minutes, prorated to the second.</td>
     <td></td>
   </tr>
 </table>
