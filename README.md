@@ -47,7 +47,7 @@ Make sure to copy `./docs/.env.example` to `.env` and change the values appropri
 yarn start && open http://localhost:3000
 ```
 
-Once started, you can set up an RPC node to start streaming `blockSubscribe` messages to your ingestion pipelines (coming soon)
+Once started, you can set up an RPC node to start streaming `blockSubscribe` messages to your ingestion pipelines via a [dedicated RPC node](https://github.com/trustless-engineering/sol-panel/wiki/Setup-Dedicated-Solana-RPC-Node-as-Data-Source).
 
 ## Contributing
 
