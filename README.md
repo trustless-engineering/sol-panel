@@ -70,7 +70,7 @@ SOL Panel wouldn't be possible without the massive support we receive from the c
       </center>
     </td>
     <td>Latitude.sh provides globally distributed bare-metal servers you can deploy in under 10 minutes, prorated to the second.</td>
-    <td></td>
+    <td><a href="https://www.latitude.sh/r/F221607B">Get started with $200 credit when you use our referral link!</a></td>
   </tr>
 </table>
 
