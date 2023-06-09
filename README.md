@@ -1,5 +1,9 @@
 # SOL Panel
 
+ <picture>
+  <img src="./docs/images/github.png">
+</picture>
+
 ## Description
 
 SOL Panel is an open-source composability platform designed to simplify the creation and orchestration of data pipelines from Solana.
