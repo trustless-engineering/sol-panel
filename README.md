@@ -1,5 +1,9 @@
 # SOL Panel
 
+ <picture>
+  <img src="./docs/images/github.png">
+</picture>
+
 ## Description
 
 SOL Panel is an open-source composability platform designed to simplify the creation and orchestration of data pipelines from Solana.
@@ -13,7 +17,7 @@ SOL Panel is an open-source composability platform designed to simplify the crea
 - Specialized for Solana: Focused support and tools specifically for the Solana blockchain.
 - Low-Code/No-Code System: Utilize a collection of plugins to construct APIs, webhooks, and event streams without the need for extensive coding.
 
-## Installation
+# Installation
 
 Follow these steps to install SOL Panel:
 
@@ -35,7 +39,7 @@ cd sol-panel
 yarn
 ```
 
-## Running
+# Running
 
 Make sure to copy `./docs/.env.example` to `.env` and change the values appropriately.
 
@@ -43,13 +47,13 @@ Make sure to copy `./docs/.env.example` to `.env` and change the values appropri
 yarn start && open http://localhost:3000
 ```
 
-Once started, you can set up an RPC node to start streaming `blockSubscribe` messages to your ingestion pipelines (coming soon)
+Once started, you can set up an RPC node to start streaming `blockSubscribe` messages to your ingestion pipelines via a [dedicated RPC node](https://github.com/trustless-engineering/sol-panel/wiki/Setup-Dedicated-Solana-RPC-Node-as-Data-Source).
 
-## Contributing
+# Contributing
 
 Contributions from the community are welcome. If you're interested in contributing, please reach out in our [Discord](https://discord.gg/xRRKucEMzz).
 
-## Sponsors
+# Sponsors
 
 SOL Panel wouldn't be possible without the massive support we receive from the community. The following organizations are official sponsors of SOL Panel:
 
@@ -63,19 +67,17 @@ SOL Panel wouldn't be possible without the massive support we receive from the c
               <img src="./docs/sponsors/latitudesh-logotype-dark.svg" width="350">
             </picture>
          </a>
-         <br />
-         <small>Latitude.sh provides globally distributed bare-metal servers you can deploy in under 10 minutes, prorated to the second.</small>
       </center>
     </td>
-    <td></td>
-    <td></td>
+    <td>Latitude.sh provides globally distributed bare-metal servers you can deploy in under 10 minutes, prorated to the second.</td>
+    <td><a href="https://www.latitude.sh/r/F221607B">Get started with $200 credit when you use our referral link!</a></td>
   </tr>
 </table>
 
-## License
+# License
 
 SOL Panel is licensed under the terms of the Apache License 2.0. For more information, please see the [LICENSE](LICENSE) file.
 
-## Contact
+# Contact
 
 If you have any questions, issues, or suggestions, please feel free to open an issue or contact us directly at [solpanel@trustless.engineering](mailto:solpanel@trustless.engineering).
