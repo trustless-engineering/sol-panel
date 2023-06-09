@@ -12,7 +12,7 @@ Currently, only the following versions of SOL Panel are being actively supported
 
 We take the security of SOL Panel seriously. If you discover any issues or vulnerabilities, we strongly encourage you to privately report your findings to our dedicated team.
 
-Please send your findings via email to disclosures+solpanel@trustless.engineering. 
+Please send your findings via email to disclosures+solpanel@trustless.engineering.
 
 Upon receiving your report, we will:
 
