@@ -53,16 +53,24 @@ Contributions from the community are welcome. If you're interested in contributi
 
 SOL Panel wouldn't be possible without the massive support we receive from the community. The following organizations are official sponsors of SOL Panel:
 
-<center style="border: 1px solid black; padding:5px;">
-<a href="https://www.latitude.sh">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./docs/sponsors/latitudesh-logotype-light.svg">
-  <img src="./docs/sponsors/latitudesh-logotype-dark.svg" width="350">
-</picture>
-</a>
-<br />
-<small>Latitude.sh provides globally distributed bare-metal servers you can deploy in under 10 minutes, prorated to the second.
-</center>
+<table>
+  <tr>
+    <td>
+      <center>
+         <a href="https://www.latitude.sh">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="./docs/sponsors/latitudesh-logotype-light.svg">
+              <img src="./docs/sponsors/latitudesh-logotype-dark.svg" width="350">
+            </picture>
+         </a>
+         <br />
+         <small>Latitude.sh provides globally distributed bare-metal servers you can deploy in under 10 minutes, prorated to the second.</small>
+      </center>
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
 
 ## License
 
