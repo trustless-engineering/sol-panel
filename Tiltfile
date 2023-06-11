@@ -8,8 +8,8 @@ k8s_resource('local-faktory', port_forwards=[7420, 7419])
 docker_build('sol-panel', '.',
     build_args={'node_env': 'development'},
     entrypoint='pnpm dev',
-    target='deps',
+    target='builder',
     live_update=[
-        sync('.', '/app'),
+        sync('./src', '/app/src'),
         run('cd /app && pnpm install', trigger=['./package.json', './pnpm-lock.yaml']),
 ])
