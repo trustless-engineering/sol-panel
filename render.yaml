@@ -1,0 +1,50 @@
+services:
+  # A Docker web service
+  - type: web
+    name: sol-panel
+    runtime: docker
+    rootDir: ./
+    numInstances: 3 # optional (defaults to 1)
+    healthCheckPath: /
+    envVars:
+      - key: REDIS_HOST
+        fromService:
+          type: redis
+          name: lightning
+          property: host # available properties are listed below
+      - key: REDIS_PORT
+        fromService:
+          type: redis
+          name: lightning
+          property: port
+      - fromGroup: conc-settings
+  # A private Minio instance
+  - type: pserv
+    name: faktory
+    runtime: image
+    image:
+      url: docker.io/contribsys/faktory:latest
+    envVars:
+      - key: FAKTORY_PASSWORD
+        generateValue: true # will generate a base64-encoded 256-bit secret
+    disk:
+      name: data
+      mountPath: /var/lib/faktory/db
+      sizeGB: 10 # optional
+
+  # A Redis instance
+  - type: redis
+    name: lightning
+    ipAllowList: # required
+      - source: 0.0.0.0/0
+        description: everywhere
+    plan: free # optional (defaults to starter instance type)
+    maxmemoryPolicy: noeviction # optional (defaults to allkeys-lru)
+
+databases:
+  - name: sol-panel
+    databaseName: sol-panel # optional (Render may add a suffix)
+    user: sol-panel_user # optional
+    ipAllowList: # optional (defaults to allow all)
+      - source: 47.201.124.244
+        description: home

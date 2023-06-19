@@ -13,6 +13,8 @@ COPY . .
 
 # Rebuild the source code only when needed
 FROM base AS builder
+
+
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
@@ -22,7 +24,9 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED 1
 RUN yarn global add pnpm
-RUN pnpm run build
+RUN --mount=type=secret,id=DATABASE_URL DATABASE_URL="$(cat ./secrets/DATABASE_URL)" pnpm prisma generate
+RUN --mount=type=secret,id=DATABASE_URL DATABASE_URL="$(cat ./secrets/DATABASE_URL)" pnpm prisma migrate deploy
+RUN --mount=type=secret,id=DATABASE_URL DATABASE_URL="$(cat ./secrets/DATABASE_URL)" pnpm run build
 
 # Production image, copy all the files and run next
 FROM base AS runner
