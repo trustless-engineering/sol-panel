@@ -2,7 +2,7 @@ services:
   # A Docker web service
   - type: web
     name: sol-panel
-    runtime: docker
+    runtime: node
     rootDir: ./
     numInstances: 3 # optional (defaults to 1)
     healthCheckPath: /
