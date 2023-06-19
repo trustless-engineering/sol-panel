@@ -89,3 +89,14 @@ faktory:
   image:
     tag: 1.7.0
   password: thisisnotsecure
+
+
+postgresql:
+  enabled: true
+  auth:
+    database: solpanel
+    username: solpanel
+    password: thisisnotsecure
+  persistence:
+    enabled: true
+    size: 2Gi

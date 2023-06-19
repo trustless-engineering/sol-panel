@@ -1,15 +1,15 @@
 "use client";
 
+import { AgentContextProvider, useAgentContext } from "@/contexts/AgentContext";
 import { useEffect, useRef, useState } from "react";
+import AgentLogs from "./components/AgentLogs";
+import AgentOverview from "./components/AgentOverview";
+import DeployStatusBar from "./components/DeployStatusBar";
 import ServerOverview from "./components/ServerOverview";
 import SolanaOverview from "./components/SolanaOverview";
-import { type LatitudeServer } from "./types/LatitudeServer";
-import { AgentContextProvider, useAgentContext } from "@/contexts/AgentContext";
-import AgentLogs from "./components/AgentLogs";
 import { type LatitudeProject } from "./types/LatitudeProject";
+import { type LatitudeServer } from "./types/LatitudeServer";
 import { type LatitudeUserdata } from "./types/LatitudeUserdata";
-import DeployStatusBar from "./components/DeployStatusBar";
-import AgentOverview from "./components/AgentOverview";
 
 const USERDATA = `#cloud-config
 
@@ -44,6 +44,7 @@ export default function DeployStep({ onSuccess, onFail, site, plan }: DeployStep
   const [project, setProject] = useState<LatitudeProject>();
   const [userdata, setUserdata] = useState<LatitudeUserdata>();
   const [server, setServer] = useState<LatitudeServer | null>(null);
+  const [rpcHealth, setRpcHealth] = useState<boolean>(false);
 
   const getProject = async (): Promise<any> => {
     const res = await request(`/projects?filter[name]=sol-panel`, "GET");
@@ -157,8 +158,41 @@ export default function DeployStep({ onSuccess, onFail, site, plan }: DeployStep
     return data.data.attributes;
   };
 
-  const { connected } = useAgentContext();
+  const { connected, url, setUrl } = useAgentContext();
   const intervalId = useRef<NodeJS.Timer>();
+
+  const checkHealth = async (): Promise<boolean> => {
+    console.log("checking health");
+    if (server == null) {
+      return false;
+    }
+
+    let result: Response | null = null;
+
+    try {
+      result = await fetch(`http://${server.attributes.primary_ipv4}:8899`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: `{"jsonrpc":"2.0","id":1, "method":"getVersion"}`,
+      });
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
+
+    if (result == null) {
+      console.log("result is null");
+      return false;
+    }
+
+    if (result.status === 200) {
+      return true;
+    }
+
+    return false;
+  };
 
   useEffect(() => {
     const refresh = async (): Promise<void> => {
@@ -172,6 +206,16 @@ export default function DeployStep({ onSuccess, onFail, site, plan }: DeployStep
       }
 
       setServer(await getServer());
+
+      if (server === undefined || server === null) {
+        return;
+      }
+
+      setRpcHealth(await checkHealth());
+
+      if (url !== `ws://${server?.attributes.primary_ipv4}:8910`) {
+        setUrl(`ws://${server?.attributes.primary_ipv4}:8910`);
+      }
     };
 
     if (intervalId.current === undefined) {
@@ -179,8 +223,14 @@ export default function DeployStep({ onSuccess, onFail, site, plan }: DeployStep
         return async (): Promise<void> => {
           await refresh();
           if (server?.attributes.status === "on") {
-            clearInterval(intervalId.current);
-            // onSuccess();
+            const healthy = await checkHealth();
+
+            setRpcHealth(healthy);
+
+            if (healthy) {
+              clearInterval(intervalId.current);
+              onSuccess();
+            }
           }
         };
       }, 5000);
@@ -193,19 +243,14 @@ export default function DeployStep({ onSuccess, onFail, site, plan }: DeployStep
   return (
     <div className="container col-span-6 items-stretch rounded-xl bg-neutral shadow-xl">
       <div className="flex w-full justify-center p-2">
-        <button className="btn-secondary btn-sm btn mr-2 justify-start">Back</button>
         <DeployStatusBar server={server} project={project} userdata={userdata} />
-
-        <button className="btn-primary btn-sm btn justify-end" disabled={true}>
-          Retry
-        </button>
       </div>
       <div className="flex w-full flex-col">
         <AgentContextProvider>
-          <div className="grid grid-cols-1 bg-neutral-800 lg:grid-cols-3">
+          <div className="grid bg-neutral-800 grid-cols-3">
             {server != null && <ServerOverview server={server} />}
             {server != null && <AgentOverview server={server} />}
-            {server != null && <SolanaOverview server={server} />}
+            {server != null && <SolanaOverview server={server} rpcHealth={rpcHealth} />}
           </div>
           {server != null && <AgentLogs url={`ws://${server?.attributes.primary_ipv4}:8910`} />}
         </AgentContextProvider>
