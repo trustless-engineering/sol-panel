@@ -2,16 +2,16 @@ services:
   # A Docker web service
   - type: web
     name: sol-panel
-    runtime: node
+    runtime: docker
     rootDir: ./
-    numInstances: 3 # optional (defaults to 1)
+    numInstances: 1
     healthCheckPath: /
     envVars:
       - key: REDIS_HOST
         fromService:
           type: redis
           name: lightning
-          property: host # available properties are listed below
+          property: host
       - key: REDIS_PORT
         fromService:
           type: redis
@@ -21,7 +21,7 @@ services:
         fromDatabase:
           name: solpanel
           property: connectionString
-  # A private Minio instance
+  # Faktory
   - type: pserv
     name: faktory
     runtime: image
