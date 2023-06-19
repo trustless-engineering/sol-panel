@@ -14,6 +14,7 @@ COPY . .
 # Rebuild the source code only when needed
 FROM base AS builder
 
+ARG DATABASE_URL
 
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
@@ -23,10 +24,13 @@ COPY . .
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED 1
+
+ENV DATABASE_URL $DATABASE_URL
+
 RUN yarn global add pnpm
-RUN --mount=type=secret,id=DATABASE_URL DATABASE_URL="$(cat ./secrets/DATABASE_URL)" pnpm prisma generate
-RUN --mount=type=secret,id=DATABASE_URL DATABASE_URL="$(cat ./secrets/DATABASE_URL)" pnpm prisma migrate deploy
-RUN --mount=type=secret,id=DATABASE_URL DATABASE_URL="$(cat ./secrets/DATABASE_URL)" pnpm run build
+RUN  pnpm prisma generate
+RUN pnpm prisma migrate deploy
+RUN pnpm run build
 
 # Production image, copy all the files and run next
 FROM base AS runner
