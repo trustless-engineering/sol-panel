@@ -28,7 +28,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 ENV DATABASE_URL $DATABASE_URL
 
 RUN yarn global add pnpm
-RUN  pnpm prisma generate
+RUN pnpm prisma generate
 RUN pnpm prisma migrate deploy
 RUN pnpm run build
 
