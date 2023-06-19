@@ -22,7 +22,7 @@ services:
           name: solpanel
           property: connectionString
   # Faktory
-  - type: pserv
+  - type: web
     name: faktory
     runtime: image
     image:
