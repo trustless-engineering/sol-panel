@@ -21,6 +21,12 @@ services:
         fromDatabase:
           name: solpanel
           property: connectionString
+    domains:
+      - next.solpanel.app
+    scaling:
+      minInstances: 1
+      maxInstances: 3
+      targetCPUPercent: 60
   # Faktory
   - type: pserv
     name: faktory
