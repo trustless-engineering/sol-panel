@@ -17,7 +17,6 @@ services:
           type: redis
           name: lightning
           property: port
-      - fromGroup: conc-settings
   # A private Minio instance
   - type: pserv
     name: faktory
