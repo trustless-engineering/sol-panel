@@ -30,6 +30,8 @@ services:
     envVars:
       - key: FAKTORY_PASSWORD
         generateValue: true # will generate a base64-encoded 256-bit secret
+      - key: FAKTORY_ENV
+        value: production
     disk:
       name: data
       mountPath: /var/lib/faktory/db
