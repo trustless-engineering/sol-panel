@@ -42,9 +42,9 @@ services:
     maxmemoryPolicy: noeviction # optional (defaults to allkeys-lru)
 
 databases:
-  - name: sol-panel
-    databaseName: sol-panel # optional (Render may add a suffix)
-    user: sol-panel_user # optional
+  - name: solpanel
+    databaseName: solpanel # optional (Render may add a suffix)
+    user: solpanel_user # optional
     ipAllowList: # optional (defaults to allow all)
       - source: 47.201.124.244
         description: home
