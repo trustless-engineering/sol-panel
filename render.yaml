@@ -4,7 +4,6 @@ services:
     name: sol-panel
     runtime: docker
     rootDir: ./
-    numInstances: 1
     healthCheckPath: /
     envVars:
       - key: REDIS_HOST
