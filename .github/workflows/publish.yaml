@@ -12,7 +12,6 @@ env:
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
-    container: node:18-alpine
     permissions:
       contents: read
       packages: write
