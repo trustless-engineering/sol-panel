@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: sol-panel
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           ports:
             - containerPort: 3000
           env:
