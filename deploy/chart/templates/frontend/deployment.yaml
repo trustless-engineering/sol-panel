@@ -23,11 +23,11 @@ spec:
             - containerPort: 3000
           env:
             - name: DATABASE_URL
-              value: "postgresql://solpanel:thisisnotsecure@local-postgresql:5432/solpanel?schema=public"
+              value: "postgresql://solpanel:thisisnotsecure@{{ .Release.Name }}-postgresql:5432/solpanel?schema=public"
             - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: local-redis
+                  name: {{ .Release.Name }}-redis
                   key: redis-password
             - name: REDIS_URL
-              value: "redis://:$(REDIS_PASSWORD)@local-redis-master:6379"
+              value: "redis://:$(REDIS_PASSWORD)@{{ .Release.Name }}-redis-master:6379"
