@@ -33,7 +33,7 @@ pnpm run check-types ||
 )
 
 # Check prisma 
-pnpm dlx prisma validate
+pnpm prisma validate
 
 # If everything passes... Now we can try to build
 echo '
