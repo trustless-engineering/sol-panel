@@ -41,7 +41,7 @@ pnpm
 
 # Running
 
-Make sure to copy `./docs/.env.example` to `.env` and change the values appropriately.
+Make sure to copy `./docs/.env.example` to `.env` and change the values appropriately!
 
 ```bash
 pnpm start && open http://localhost:3000
