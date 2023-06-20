@@ -8,7 +8,7 @@ pnpm run check-format ||
 (
     echo '
     🤢🤮🤢🤮 Its F*&CK*NG RAW - Your styling looks disgusting. 🤢🤮🤢🤮
-            Prettier Check Failed. Run yarn format, add changes and try commit again.
+            Prettier Check Failed. Run `pnpm format`, add changes and try commit again.
 ';
     false;
 )

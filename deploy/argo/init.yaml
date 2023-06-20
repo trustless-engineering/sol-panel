@@ -4,8 +4,14 @@ metadata:
     name: solpanel
     namespace: argocd
 spec:
-    sourceNamespaces:
-    - solpanel
+  sourceRepos:
+    - https://github.com/trustless-engineering/sol-panel.git
+  destinations:
+    - namespace: solpanel
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -21,7 +27,7 @@ spec:
 
   # Source of the application manifests
   source:
-    repoURL: https://github.com/trustless-engineering/solpanel.git
+    repoURL: https://github.com/trustless-engineering/sol-panel.git
     targetRevision: next
     path: deploy/chart
     helm:
@@ -29,7 +35,6 @@ spec:
 
   # Destination cluster and namespace to deploy the application
   destination:
-    # cluster API URL
     server: https://kubernetes.default.svc
     namespace: solpanel
     
