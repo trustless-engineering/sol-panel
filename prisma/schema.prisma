@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  binaryTargets   = ["native", "linux-musl"]
+  previewFeatures = ["clientExtensions"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Plugin {
+  id          String     @id @default(cuid())
+  name        String
+  description String
+  version     String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  deletedAt   DateTime   @default(now())
+  config      Json
+  producers   Producer[]
+}
+
+model Producer {
+  id               String   @id @default(cuid())
+  plugin           Plugin   @relation(fields: [pluginId], references: [id])
+  pluginId         String
+  name             String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  deletedAt        DateTime @default(now())
+  eventsPerSecond  Int
+  averageEventSize Int
+  streams          Stream[]
+}
+
+model Stream {
+  id         String    @id @default(cuid())
+  producer   Producer  @relation(fields: [producerId], references: [id])
+  producerId String
+  name       String
+  enabled    Boolean   @default(true)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime  @default(now())
+  maxEvents  Int
+  pipeline   Pipeline? @relation(fields: [pipelineId], references: [id])
+  pipelineId String?
+}
+
+model Pipeline {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime @default(now())
+  config    Json
+  streams   Stream[]
+}

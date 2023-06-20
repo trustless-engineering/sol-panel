@@ -1,11 +1,11 @@
 "use client";
 
-import Configure from "@/components/setup/latitude/Configure";
-
-import React, { type ReactNode, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import SetupHeader from "./header";
-import Deploy from "@/components/setup/latitude/Deploy";
-import Preflight from "@/components/setup/latitude/Preflight";
+
+import Configure from "@/plugins/core/producers/rpc/Configure";
+import Deploy from "@/plugins/core/producers/rpc/Deploy";
+import Preflight from "@/plugins/core/producers/rpc/Preflight";
 
 export interface ConfigurationStep {
   step: number;
