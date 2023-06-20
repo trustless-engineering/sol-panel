@@ -33,6 +33,11 @@ module.exports = {
       "default",
     ],
   },
+  variants: {
+    extend: {
+      visibility: ["hover", "group-hover"],
+    },
+  },
   plugins: [
     require("@tailwindcss/forms")({
       strategy: "base", // only generate global styles

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function NavBar(): React.JSX.Element {
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-primary text-primary-content mb-2">
       <div className="flex-1">
         <Link href="/" className="btn-ghost btn text-xl normal-case">
           Sol Panel

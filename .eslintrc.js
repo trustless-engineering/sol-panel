@@ -11,5 +11,7 @@ module.exports = {
   },
   extends: ["standard-with-typescript", "plugin:react/recommended", "next/core-web-vitals", "prettier"],
   plugins: ["react"],
-  rules: {},
+  rules: {
+    "react-hooks/exhaustive-deps": "off",
+  },
 };

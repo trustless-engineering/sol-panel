@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import icon from "@/assets/latitude.svg";
-import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import icon from "./assets/icons/latitude.svg";
 
 const apiKey = process.env.NEXT_PUBLIC_LATITUDE_API_KEY;
 const flavor = "c3-large-x86";
