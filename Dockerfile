@@ -14,8 +14,6 @@ COPY . .
 # Rebuild the source code only when needed
 FROM base AS builder
 
-ARG DATABASE_URL
-
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
@@ -25,7 +23,7 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED 1
 
-ENV DATABASE_URL $DATABASE_URL
+COPY deploy/build.env .env
 
 RUN yarn global add pnpm
 RUN pnpm prisma generate
