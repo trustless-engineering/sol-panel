@@ -4,17 +4,17 @@
 echo '🏗️👷 Styling, testing and building your project before committing'
 
 # Check Prettier standards
-yarn run check-format ||
+pnpm run check-format ||
 (
     echo '
     🤢🤮🤢🤮 Its F*&CK*NG RAW - Your styling looks disgusting. 🤢🤮🤢🤮
-            Prettier Check Failed. Run yarn format, add changes and try commit again.
+            Prettier Check Failed. Run `pnpm format`, add changes and try commit again.
 ';
     false;
 )
 
 # Check ESLint Standards
-yarn run check-lint ||
+pnpm run check-lint ||
 (
         echo '
         😤🏀👋😤 Get that weak shit out of here! 😤🏀👋😤 
@@ -23,7 +23,7 @@ yarn run check-lint ||
 )
 
 # Check tsconfig standards
-yarn run check-types ||
+pnpm run check-types ||
 (
     echo '
     🤡😂❌🤡 Failed Type check. 🤡😂❌🤡
@@ -37,7 +37,7 @@ echo '
 🤔🤔🤔🤔... Alright... Code looks good to me... Trying to build now. 🤔🤔🤔🤔
 '
 
-yarn run build ||
+pnpm run build ||
 (
     echo '
     ❌👷🔨❌ Better call Bob... Because your build failed ❌👷🔨❌
