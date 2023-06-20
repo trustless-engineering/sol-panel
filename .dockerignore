@@ -1,0 +1,106 @@
+# flyctl launch added from .gitignore
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+.pnp
+**/.pnp.js
+
+# testing
+coverage
+
+# next.js
+.next
+out
+
+# production
+build
+
+# misc
+**/.DS_Store
+**/*.pem
+
+# debug
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+# local env files
+**/.env*.local
+**/.env
+
+# vercel
+**/.vercel
+
+# typescript
+**/*.tsbuildinfo
+**/next-env.d.ts
+
+# flyctl launch added from .husky/_/.gitignore
+.husky/_/**/*
+
+# flyctl launch added from node_modules/.pnpm/jayson@4.1.0/node_modules/jayson/.gitignore
+node_modules/.pnpm/jayson@4.1.0/node_modules/jayson/node_modules
+node_modules/.pnpm/jayson@4.1.0/node_modules/jayson/**/.*
+!node_modules/.pnpm/jayson@4.1.0/node_modules/jayson/**/.gitignore
+!node_modules/.pnpm/jayson@4.1.0/node_modules/jayson/**/.travis.yml
+!node_modules/.pnpm/jayson@4.1.0/node_modules/jayson/**/.jshintrc
+!node_modules/.pnpm/jayson@4.1.0/node_modules/jayson/**/.npmignore
+node_modules/.pnpm/jayson@4.1.0/node_modules/jayson/coverage
+node_modules/.pnpm/jayson@4.1.0/node_modules/jayson/yarn-error.log
+
+# flyctl launch added from node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/.gitignore
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/bench_inv
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/bench_ecdh
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/bench_ecmult
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/bench_sign
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/bench_verify
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/bench_schnorr_verify
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/bench_recover
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/bench_internal
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/tests
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/exhaustive_tests
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/gen_context
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/*.exe
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/*.so
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/*.a
+!node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/.gitignore
+
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/Makefile
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/configure
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/.libs
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/Makefile.in
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/aclocal.m4
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/autom4te.cache
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/config.log
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/config.status
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/*.tar.gz
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/*.la
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/libtool
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/.deps
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/.dirstamp
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/*.lo
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/*.o
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/*~
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/src/libsecp256k1-config.h
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/src/libsecp256k1-config.h.in
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/src/ecmult_static_context.h
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/build-aux/config.guess
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/build-aux/config.sub
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/build-aux/depcomp
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/build-aux/install-sh
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/build-aux/ltmain.sh
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/build-aux/m4/libtool.m4
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/build-aux/m4/lt~obsolete.m4
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/build-aux/m4/ltoptions.m4
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/build-aux/m4/ltsugar.m4
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/build-aux/m4/ltversion.m4
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/build-aux/missing
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/build-aux/compile
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/build-aux/test-driver
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/src/stamp-h1
+node_modules/.pnpm/secp256k1@4.0.3/node_modules/secp256k1/src/secp256k1/**/libsecp256k1.pc
+
+# flyctl launch added from node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/stubs/.gitignore
+!node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/stubs/**/*
+fly.toml

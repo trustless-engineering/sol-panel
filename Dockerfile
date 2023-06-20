@@ -9,9 +9,13 @@ WORKDIR /app
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 RUN yarn global add pnpm && pnpm install --frozen-lockfile
+COPY . .
 
 # Rebuild the source code only when needed
 FROM base AS builder
+
+ARG DATABASE_URL
+
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
@@ -20,8 +24,12 @@ COPY . .
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED 1
+
+ENV DATABASE_URL $DATABASE_URL
+
 RUN yarn global add pnpm
-<<<<<<< Updated upstream
+RUN pnpm prisma generate
+RUN pnpm prisma migrate deploy
 RUN pnpm run build
 
 # Production image, copy all the files and run next
@@ -43,10 +51,8 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
-=======
 RUN pnpm prisma generate
 RUN pnpm prisma migrate deploy
->>>>>>> Stashed changes
 
 EXPOSE 3000
 ENV PORT 3000

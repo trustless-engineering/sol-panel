@@ -1,0 +1,52 @@
+services:
+  # A Docker web service
+  - type: web
+    name: sol-panel
+    runtime: docker
+    rootDir: ./
+    healthCheckPath: /
+    envVars:
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: lightning
+          property: connectionString
+      - key: DATABASE_URL
+        fromDatabase:
+          name: solpanel
+          property: connectionString
+    domains:
+      - next.solpanel.app
+    scaling:
+      minInstances: 1
+      maxInstances: 3
+      targetCPUPercent: 60
+  # Faktory
+  - type: pserv
+    name: faktory
+    runtime: image
+    image:
+      url: docker.io/contribsys/faktory:latest
+    envVars:
+      - key: FAKTORY_PASSWORD
+        generateValue: true # will generate a base64-encoded 256-bit secret
+      - key: FAKTORY_ENV
+        value: production
+    disk:
+      name: data
+      mountPath: /var/lib/faktory/db
+      sizeGB: 10 # optional
+
+  # A Redis instance
+  - type: redis
+    name: lightning
+    ipAllowList: # required
+      - source: 0.0.0.0/0
+        description: everywhere
+    plan: free # optional (defaults to starter instance type)
+    maxmemoryPolicy: noeviction # optional (defaults to allkeys-lru)
+
+databases:
+  - name: solpanel
+    databaseName: solpanel # optional (Render may add a suffix)
+    user: solpanel_user # optional

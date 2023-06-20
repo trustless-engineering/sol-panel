@@ -1,6 +1,12 @@
 dependencies:
+- name: postgresql
+  repository: https://charts.bitnami.com/bitnami
+  version: 12.5.6
+- name: redis
+  repository: oci://registry-1.docker.io/bitnamicharts
+  version: 17.11.3
 - name: faktory
   repository: https://adwerx.github.io/charts
   version: 0.12.3
-digest: sha256:99fd4d7514e965b98fc66fbd78f2e3b8a35a05d5aa823a171dc42f657a1c41d2
-generated: "2023-05-31T18:14:25.028109-04:00"
+digest: sha256:1e73ac363520938a05f376570ae0b9cc69d10618e380fec12d830abcbcf75b7d
+generated: "2023-06-13T07:22:11.863053-04:00"
