@@ -55,7 +55,7 @@ Contributions from the community are welcome. If you're interested in contributi
 
 ## Setup for Mac OS X
 
-Install the dependencies:
+Install the dependencies first:
 
 ```
 brew install --cask docker
