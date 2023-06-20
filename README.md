@@ -36,7 +36,7 @@ cd sol-panel
 3. Install pre-requisites
 
 ```
-yarn
+pnpm
 ```
 
 # Running
@@ -44,7 +44,7 @@ yarn
 Make sure to copy `./docs/.env.example` to `.env` and change the values appropriately.
 
 ```bash
-yarn start && open http://localhost:3000
+pnpm start && open http://localhost:3000
 ```
 
 Once started, you can set up an RPC node to start streaming `blockSubscribe` messages to your ingestion pipelines via a [dedicated RPC node](https://github.com/trustless-engineering/sol-panel/wiki/Setup-Dedicated-Solana-RPC-Node-as-Data-Source).
@@ -52,6 +52,17 @@ Once started, you can set up an RPC node to start streaming `blockSubscribe` mes
 # Contributing
 
 Contributions from the community are welcome. If you're interested in contributing, please reach out in our [Discord](https://discord.gg/xRRKucEMzz).
+
+## Setup for Mac OS X
+
+Install the dependencies:
+
+```
+brew install --cask docker
+brew install ctlptl kind tilt
+```
+
+The best way to get started is to install [Tilt.dev](https://docs.tilt.dev/install.html) and then run `tilt up` in the repo. Everything wi
 
 # Sponsors
 
