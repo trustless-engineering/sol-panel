@@ -13,7 +13,7 @@
     "format": "prettier --write .",
     "test-all": "pnpm run check-format && pnpm run check-lint && pnpm run check-types && pnpm run build",
     "prepare": "husky install",
-    "deploy:migrate": "pnpm prisma migrate deploy"
+    "deploy:migrate": "prisma migrate deploy"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.15",
