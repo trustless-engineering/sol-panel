@@ -9,8 +9,6 @@ export async function GET(request: Request): Promise<Response> {
     console.error(error);
   });
 
-  await client.connect();
-
   const redisStreams = await client.keys("streams:*");
 
   return new Response(JSON.stringify(redisStreams), {
