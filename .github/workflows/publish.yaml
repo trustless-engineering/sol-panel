@@ -12,7 +12,6 @@ env:
 jobs:
   build-and-push-image:
     runs-on: self-hosted
-    container: ubuntu
     permissions:
       contents: read
       packages: write
