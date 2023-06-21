@@ -1,17 +1,19 @@
 import { createClient } from "redis";
 
 export async function GET(request: Request): Promise<Response> {
-  const client = createClient({
+  const redis = createClient({
     url: process.env.REDIS_URL,
   });
 
-  client.on("error", (error) => {
+  redis.on("error", (error) => {
     console.error(error);
   });
 
-  const redisStreams = await client.keys("streams:*");
+  await redis.connect();
 
-  return new Response(JSON.stringify(redisStreams), {
+  const streams = await redis.keys("streams:*");
+
+  return new Response(JSON.stringify(streams), {
     headers: { "content-type": "application/json" },
   });
 }
