@@ -13,7 +13,9 @@ COPY . .
 
 # Rebuild the source code only when needed
 FROM base AS builder
-
+LABEL org.opencontainers.image.description "SOL Panel"
+LABEL org.opencontainers.image.source=https://github.com/trustless-engineering/sol-panel
+LABEL org.opencontainers.image.licenses="Apache 2.0"
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
@@ -25,3 +27,5 @@ ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN yarn global add pnpm
 RUN pnpm prisma generate
+
+CMD ["pnpm", "run", "start:prod"]
