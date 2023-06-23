@@ -1,0 +1,42 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
+{
+  "name": "SOL Panel",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "image": "Dockerfile",
+
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // "features": {},
+
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      "settings": {},
+      "extensions": ["streetsidesoftware.code-spell-checker"]
+    }
+  },
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [3000],
+
+  // Use 'portsAttributes' to set default properties for specific forwarded ports.
+  // More info: https://containers.dev/implementors/json_reference/#port-attributes
+  "portsAttributes": {
+    "10350": {
+      "label": "Tilt UI",
+      "onAutoForward": "openBrowser"
+    },
+    "3000": {
+      "label": "Frontend",
+      "onAutoForward": "notify"
+    },
+    "5432": {
+      "label": "Postgres",
+      "onAutoForward": "notify"
+    }
+  },
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "pnpm install"
+}
