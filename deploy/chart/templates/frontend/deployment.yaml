@@ -24,10 +24,5 @@ spec:
           env:
             - name: DATABASE_URL
               value: "postgresql://solpanel:thisisnotsecure@{{ .Release.Name }}-postgresql:5432/solpanel?schema=public"
-            - name: REDIS_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Release.Name }}-redis
-                  key: redis-password
             - name: REDIS_URL
-              value: "redis://:$(REDIS_PASSWORD)@{{ .Release.Name }}-redis-master:6379"
+              value: "redis://{{ .Release.Name }}-redis-master:6379"

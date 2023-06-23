@@ -12,6 +12,17 @@
   // Features to add to the dev container. More info: https://containers.dev/features.
   // "features": {},
 
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    },
+    "docker-in-docker": {
+      "version": "latest",
+      "moby": true,
+      "dockerDashComposeVersion": "v1"
+    }
+  },
+
   // Configure tool-specific properties.
   "customizations": {
     // Configure properties specific to VS Code.
@@ -49,7 +60,11 @@
     "5432": {
       "label": "Postgres",
       "onAutoForward": "notify"
+    },
+    "6379": {
+      "label": "Redis",
+      "onAutoForward": "silent"
     }
   },
-  "postCreateCommand": "bash -i -c 'nvm install && npm install -g pnpm && pnpm install'"
+  "postCreateCommand": ". ${NVM_DIR}/nvm.sh && nvm install && npm install -g pnpm && pnpm install"
 }
