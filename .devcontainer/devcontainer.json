@@ -54,5 +54,5 @@
   },
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postStartCommand": "nvm install && pnpm install"
+  "postCreateCommand": "bash -i -c 'nvm install'"
 }
