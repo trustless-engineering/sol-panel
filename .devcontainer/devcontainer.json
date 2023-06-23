@@ -51,8 +51,5 @@
       "label": "Postgres",
       "onAutoForward": "notify"
     }
-  },
-
-  // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "bash -i -c 'nvm install'"
+  }
 }

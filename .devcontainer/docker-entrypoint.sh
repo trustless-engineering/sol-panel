@@ -2,8 +2,8 @@
 
 echo "Welcome to SOL Panel Development!"
 
-nvm install
-npm install -g pnpm
-pnpm install
+bash -i -c 'nvm install'
+bash -i -c 'npm install -g pnpm'
+bash -i -c 'pnpm install'
 
 exec "$@"
