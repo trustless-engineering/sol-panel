@@ -8,7 +8,6 @@
     // Path is relataive to the devcontainer.json file.
     "dockerfile": "Dockerfile"
   },
-  "overrideCommand": false,
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   // "features": {},
@@ -51,5 +50,6 @@
       "label": "Postgres",
       "onAutoForward": "notify"
     }
-  }
+  },
+  "postCreateCommand": "bash -i -c 'nvm install && npm install -g pnpm && pnpm install'"
 }
