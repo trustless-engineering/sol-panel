@@ -2,6 +2,7 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
 {
   "name": "SOL Panel",
+  "remoteUser": "root",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
   "build": {
     // Path is relataive to the devcontainer.json file.
