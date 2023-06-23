@@ -100,3 +100,7 @@ postgresql:
   persistence:
     enabled: true
     size: 2Gi
+
+redis:
+  auth:
+    enabled: false
