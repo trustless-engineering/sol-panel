@@ -9,7 +9,7 @@ k8s_resource('local-redis-master', port_forwards=6379)
 docker_build('ghcr.io/trustless-engineering/sol-panel', '.',
     build_args={'node_env': 'development'},
     entrypoint='pnpm dev',
-    target='deps',
+    target='dev',
     live_update=[
         sync('./src', '/app/src'),
         run('cd /app && pnpm install', trigger=['./package.json', './pnpm-lock.yaml']),

@@ -10,6 +10,10 @@ You can then connect directly to the Codespace from VS Code.
 
 After the codespace is started, you can spin the cluster and start the application with the following commands:
 
+### Seed Databases
+
+`pnpm prisma generate`
+
 ### Create Cluster
 
 `ctlptl create cluster kind --registry=ctlptl-registry`
