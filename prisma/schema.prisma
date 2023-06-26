@@ -12,50 +12,112 @@ datasource db {
 }
 
 model Plugin {
-  id          String     @id @default(cuid())
+  id String @id @default(cuid())
+
+  createdAt DateTime @default(now())
+
   name        String
   description String
   version     String
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
-  deletedAt   DateTime   @default(now())
-  config      Json
+  config      Json?
   producers   Producer[]
+  consumers   Consumer[]
+  pipelines   Pipeline[]
+
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime @default(now())
 }
 
 model Producer {
-  id               String   @id @default(cuid())
-  plugin           Plugin   @relation(fields: [pluginId], references: [id])
-  pluginId         String
-  name             String
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-  deletedAt        DateTime @default(now())
-  eventsPerSecond  Int
-  averageEventSize Int
-  streams          Stream[]
+  id String @id @default(cuid())
+
+  createdAt DateTime @default(now())
+
+  plugin   Plugin @relation(fields: [pluginId], references: [id])
+  pluginId String
+  name     String
+  config   Json?
+
+  updatedAt DateTime           @updatedAt
+  deletedAt DateTime           @default(now())
+  instances ProducerInstance[]
+}
+
+model ProducerInstance {
+  id String @id @default(cuid())
+
+  createdAt  DateTime @default(now())
+  producerId String
+  producer   Producer @relation(fields: [producerId], references: [id])
+  name       String
+  config     Json?
+  streams    Stream[]
+
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime @default(now())
+}
+
+model Consumer {
+  id       String @id @default(cuid())
+  pluginId String
+
+  createdAt DateTime @default(now())
+
+  name        String
+  description String?
+  config      Json?
+  plugin      Plugin  @relation(fields: [pluginId], references: [id])
+
+  updatedAt DateTime           @updatedAt
+  deletedAt DateTime           @default(now())
+  instances ConsumerInstance[]
+}
+
+model ConsumerInstance {
+  id String @id @default(cuid())
+
+  createdAt  DateTime @default(now())
+  consumerId String
+  consumer   Consumer @relation(fields: [consumerId], references: [id])
+
+  name        String
+  description String?
+  config      Json?
+  streams     Stream[]
+
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime @default(now())
 }
 
 model Stream {
-  id         String    @id @default(cuid())
-  producer   Producer  @relation(fields: [producerId], references: [id])
-  producerId String
-  name       String
-  enabled    Boolean   @default(true)
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
-  deletedAt  DateTime  @default(now())
-  maxEvents  Int
-  pipeline   Pipeline? @relation(fields: [pipelineId], references: [id])
-  pipelineId String?
+  id String @id @default(cuid())
+
+  createdAt DateTime @default(now())
+
+  name        String
+  description String?
+  enabled     Boolean    @default(true)
+  pipelines   Pipeline[]
+
+  updatedAt DateTime           @updatedAt
+  deletedAt DateTime           @default(now())
+  producers ProducerInstance[]
+  consumers ConsumerInstance[]
 }
 
 model Pipeline {
-  id        String   @id @default(cuid())
-  name      String
+  id       String @id @default(cuid())
+  pluginId String
+
+  plugin Plugin @relation(fields: [pluginId], references: [id])
+
   createdAt DateTime @default(now())
+
+  name        String
+  description String?
+  config      Json?
+  streams     Stream[]
+
   updatedAt DateTime @updatedAt
   deletedAt DateTime @default(now())
-  config    Json
-  streams   Stream[]
 }
