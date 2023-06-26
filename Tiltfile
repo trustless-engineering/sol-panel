@@ -14,3 +14,6 @@ docker_build('ghcr.io/trustless-engineering/sol-panel', '.',
         sync('./src', '/app/src'),
         run('cd /app && pnpm install', trigger=['./package.json', './pnpm-lock.yaml']),
 ])
+
+## Dev Tooling
+local_resource('prisma studio', serve_cmd='pnpm prisma studio --port 5555 --browser none', auto_init=False)

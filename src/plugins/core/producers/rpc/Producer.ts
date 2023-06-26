@@ -10,7 +10,7 @@ export default class RPCProducer implements Producer {
   name = "Latitude.sh RPC Node";
   version = "0.1.0";
   description = "A producer that deploys a dedicated Solana RPC Node on Latitude.sh.";
-  config: RPCProducerConfig | null = null;
+  config: any;
   pluginId: string = "core.dedicated_rpc";
   createdAt: Date;
   updatedAt: Date;

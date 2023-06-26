@@ -29,7 +29,6 @@ export default function StreamsIndex(): React.JSX.Element {
               {/* head */}
               <thead>
                 <tr>
-                  <th>ID</th>
                   <th>Name</th>
                   <th>Producers</th>
                   <th>Status</th>
@@ -40,12 +39,18 @@ export default function StreamsIndex(): React.JSX.Element {
                 {streams?.map((stream: Stream) => {
                   return (
                     <tr key={stream.id}>
-                      <th>{stream.id}</th>
-                      <td>{stream.name}</td>
-                      <td>{stream.producerId}</td>
+                      <td>
+                        <Link className="link link-accent" href={`/streams/${stream.id}`}>
+                          {stream.name}
+                        </Link>
+                      </td>
+                      <td>0</td>
                       <td>{stream.enabled ? <span className="badge badge-success">active</span> : <span className="badge badge-error">inactive</span>}</td>
                       <td>
-                        <button className="btn btn-xs btn-outline btn-accent">Edit</button>
+                        <div className="join">
+                          <button className="btn btn-xs join-item btn-outline btn-accent">Edit</button>
+                          <button className="btn btn-xs join-item btn-outline btn-error">Delete</button>
+                        </div>
                       </td>
                     </tr>
                   );
@@ -53,7 +58,7 @@ export default function StreamsIndex(): React.JSX.Element {
               </tbody>
             </table>
           </div>
-          <Link href="/streams/create" className="btn btn-primary">
+          <Link href="/streams/new" className="btn btn-primary">
             New Stream
           </Link>
         </div>

@@ -13,5 +13,6 @@ module.exports = {
   plugins: ["react"],
   rules: {
     "react-hooks/exhaustive-deps": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
   },
 };
