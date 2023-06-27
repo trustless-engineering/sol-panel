@@ -119,6 +119,14 @@
         "name": "next",
         "prerelease": true
       }
+    ],
+    "plugins": [
+      [
+        "semantic-release-helm",
+        {
+          "chartPath": "./deploy/chart"
+        }
+      ]
     ]
   },
   "ts-node": {
