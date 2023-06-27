@@ -32,12 +32,12 @@ export default class RPCProducer implements Producer {
   }
 
   setup = async (): Promise<any> => {
-    return await new Promise<any>((resolve, reject) => { });
+    return await new Promise<any>((resolve, reject) => {});
   };
 
-  start = async (): Promise<void> => { };
+  start = async (): Promise<void> => {};
 
-  stop = async (): Promise<void> => { };
+  stop = async (): Promise<void> => {};
 
   status = async (): Promise<string> => {
     return "Not implemented.";
