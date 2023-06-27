@@ -48,7 +48,9 @@ export default function StreamsIndex(): React.JSX.Element {
                       <td>{stream.enabled ? <span className="badge badge-success">active</span> : <span className="badge badge-error">inactive</span>}</td>
                       <td>
                         <div className="join">
-                          <button className="btn btn-xs join-item btn-outline btn-accent">Edit</button>
+                          <Link href={`/streams/${stream.id}/edit`} className="btn btn-xs join-item btn-outline btn-accent">
+                            Edit
+                          </Link>
                           <button className="btn btn-xs join-item btn-outline btn-error">Delete</button>
                         </div>
                       </td>

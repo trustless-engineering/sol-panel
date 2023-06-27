@@ -1,5 +1,8 @@
+import { PrismaClient } from "@prisma/client";
 import { type NextRequest } from "next/server";
 import * as redis from "redis";
+
+const prisma = new PrismaClient();
 
 const redisClient = redis.createClient({
   url: process.env.REDIS_URL,
@@ -26,13 +29,21 @@ const sendMessage = async (streamId: string, message: any): Promise<void> => {
 
 export async function POST(request: NextRequest, { params }: { params: WebhookRequestParams }): Promise<Response> {
   try {
-    // const producers = await prisma.producer.findUnique({
-    //   where: {
-    //     id,
-    //   }, include: {
-    //     plugin: true
-    //   }
-    // });
+    const producer = await prisma.producer.findUnique({
+      where: { id: params.id },
+    });
+
+    if (!producer) {
+      return new Response(
+        JSON.stringify({
+          error: "Producer not found",
+        }),
+        {
+          headers: { "content-type": "application/json" },
+          status: 404,
+        }
+      );
+    }
 
     const body = await request.json();
 

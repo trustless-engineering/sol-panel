@@ -1,0 +1,10 @@
+# A role that allows sol panel to deploy to the namespace
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: solpanel-deploy
+  namespace: {{ .Release.Namespace }}
+rules:
+- apiGroups: ["", "extensions", "apps"]
+  resources: ["deployments", "replicasets", "pods"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]

@@ -16,6 +16,8 @@ export default class RPCProducer implements Producer {
   updatedAt: Date;
   deletedAt: Date;
   eventsPerSecond: number;
+  providerId: string;
+  streamId: string | null;
   averageEventSize: number;
 
   constructor(config: RPCProducerConfig) {
@@ -25,6 +27,8 @@ export default class RPCProducer implements Producer {
     this.deletedAt = new Date();
     this.eventsPerSecond = 0;
     this.averageEventSize = 0;
+    this.providerId = "";
+    this.streamId = null;
   }
 
   setup = async (): Promise<any> => {
