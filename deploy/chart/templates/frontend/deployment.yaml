@@ -16,6 +16,7 @@ spec:
         app: sol-panel
         component: frontend
     spec:
+      serviceAccountName: {{ include "sol-panel.serviceAccountName" . }}
       containers:
         - name: frontend
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}

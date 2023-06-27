@@ -5,15 +5,22 @@ const plugins = [
     name: "Core",
     description: "Core plugin for the Stream Processor",
     version: "0.0.1",
-    producers: [
+    ProducerProviders: [
       {
         name: "Core RPC",
       },
       {
         name: "Webhook",
+        configTemplate: {
+          url: "https://example.com",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
       },
     ],
-    consumers: [
+    ConsumerProviders: [
       {
         name: "Webhook",
       },
@@ -43,11 +50,11 @@ const main = async (): Promise<void> => {
         name: plugin.name,
         description: plugin.description,
         version: plugin.version,
-        producers: {
-          create: plugin.producers,
+        ProducerProvider: {
+          create: plugin.ProducerProviders,
         },
-        consumers: {
-          create: plugin.consumers,
+        ConsumerProvider: {
+          create: plugin.ConsumerProviders,
         },
       },
     });
@@ -63,7 +70,37 @@ const main = async (): Promise<void> => {
       },
     });
 
+    const webhookProvider = await prisma.producerProvider.findFirst({
+      where: {
+        name: "Webhook",
+      },
+    });
+
+    const producer = await prisma.producer.create({
+      data: {
+        name: "Webhook Producer",
+        provider: {
+          connect: {
+            id: webhookProvider?.id,
+          },
+        },
+        stream: {
+          connect: {
+            id: result.id,
+          },
+        },
+        config: {
+          url: "https://webhook.site/504e7de4-2bd0-46ce-a29e-ebadd57cd75f",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      },
+    });
+
     console.log("Created stream: ", result);
+    console.log("Created producer: ", producer);
   }
 };
 
