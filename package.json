@@ -125,13 +125,16 @@
       }
     ],
     "plugins": [
+      "@semantic-release/commit-analyzer",
       [
         "semantic-release-helm3",
         {
           "chartPath": "deploy/chart",
           "registry": "ghcr.io/trustless-engineering/helm-charts"
         }
-      ]
+      ],
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github"
     ]
   },
   "ts-node": {
