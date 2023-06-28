@@ -24,7 +24,11 @@ jobs:
           fetch-depth: 0
           ssh-key: "${{ secrets.RELEASE_KEY }}"
       - uses: pnpm/action-setup@v2
+      - name: Install dependencies
+        run: pnpm install
+      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
+        run: pnpm audit signatures
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: pnpx --yes --package semantic-release-helm3 --package semantic-release semantic-release
+        run: pnpm semantic-release
