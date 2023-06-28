@@ -130,7 +130,8 @@
         "semantic-release-helm3",
         {
           "chartPath": "deploy/chart",
-          "registry": "ghcr.io/trustless-engineering/helm-charts"
+          "crPublish": true,
+          "crConfigPath": "deploy/chart/cr.yaml"
         }
       ],
       "@semantic-release/release-notes-generator",
@@ -139,7 +140,7 @@
         {
           "assets": [
             {
-              "path": "deploy/chart/*.tgz",
+              "path": "deploy/.cr-release-packages/*.tgz",
               "label": "Helm Chart"
             }
           ]
