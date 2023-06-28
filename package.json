@@ -2,7 +2,6 @@
   "name": "sol-panel",
   "version": "0.1.0",
   "private": true,
-  "repository": "https://github.com/trustless-engineering/sol-panel",
   "scripts": {
     "dev": "pnpm prisma generate && pnpm next dev",
     "build": "pnpm next build",
