@@ -32,7 +32,7 @@ jobs:
           install_only: true
 
       - name: Build chart
-        run: helm package -u deploy/chart -d .charts
+        run: helm package -u deploy/chart -d .charts --version ${{ github.ref_name }} --app-version ${{ github.ref_name }}
 
       - name: Push chart
         run: |
