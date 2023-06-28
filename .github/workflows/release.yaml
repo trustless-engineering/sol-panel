@@ -29,10 +29,15 @@ jobs:
         with:
           install_only: true
 
-      - name: package chart
+      - name: Update Chart Version
+        run: |
+          sed -i "s/^version:.*/version: ${{ github.ref }}/g" deploy/chart/Chart.yaml
+          sed -i "s/^appVersion:.*/appVersion: ${{ github.ref }}/g" deploy/chart/Chart.yaml
+
+      - name: Package Chart
         run: cr package --config deploy/cr.yaml deploy/chart
 
-      - name: upload chart
+      - name: Upload Chart
         run: cr upload --config deploy/cr.yaml --token ${{ secrets.CHARTS_RELEASE_TOKEN }} deploy/chart
 
       - name: Use PNPM
