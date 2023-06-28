@@ -126,16 +126,22 @@
     ],
     "plugins": [
       "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      [
-        "@semantic-release/github"
-      ],
       [
         "semantic-release-helm3",
         {
-          "chartPath": "deploy/chart",
-          "crPublish": true,
-          "crConfigPath": "deploy/chart/cr.yaml"
+          "chartPath": "deploy/chart"
+        }
+      ],
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/github",
+        {
+          "assets": [
+            {
+              "path": "*.tgz",
+              "label": "Helm Chart"
+            }
+          ]
         }
       ]
     ]
