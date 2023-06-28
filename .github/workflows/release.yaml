@@ -23,8 +23,6 @@ jobs:
         with:
           fetch-depth: 0
           ssh-key: "${{ secrets.RELEASE_KEY }}"
-      - uses: pnpm/action-setup@v2
-      - name: Install dependencies
         run: pnpm install
       - name: Helm Chart Releaser
         uses: helm/chart-releaser-action@v1.5.0
