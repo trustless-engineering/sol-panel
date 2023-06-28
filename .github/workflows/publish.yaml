@@ -29,10 +29,16 @@ jobs:
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
         with:
-          charts_dir: ./deploy/chart
-          config: deploy/cr.yaml
-        env:
-          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          install_only: true
+
+      - name: Build chart
+        run: |
+          helm dependency update deploy/chart
+          helm package deploy/chart
+
+      - name: Push chart
+        run: |
+          cr upload -o trustless-engineering -r helm-charts -p deploy/chart --token ${{ secrets.CHARTS_RELEASE_TOKEN }}
 
   build-and-push-image:
     runs-on: self-hosted
