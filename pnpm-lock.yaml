@@ -265,6 +265,9 @@ devDependencies:
   semantic-release-helm:
     specifier: ^2.2.0
     version: 2.2.0
+  semantic-release-helm3:
+    specifier: ^2.6.0
+    version: 2.6.0
   tailwindcss:
     specifier: ^3.3.2
     version: 3.3.2
@@ -9427,6 +9430,16 @@ packages:
       node-addon-api: 2.0.2
       node-gyp-build: 4.6.0
     dev: false
+
+  /semantic-release-helm3@2.6.0:
+    resolution: {integrity: sha512-M57FbB8wQuUMrSNt8VGpyWMKkfrIaW++sXQIK3qt6ls2qYi5gr6bLw0s3BaQbvfDcGGrj2q4wldxs1y+Z110gg==}
+    dependencies:
+      aggregate-error: 3.1.0
+      execa: 5.1.1
+      js-yaml: 4.1.0
+      path: 0.12.7
+      semver: 7.5.3
+    dev: true
 
   /semantic-release-helm@2.2.0:
     resolution: {integrity: sha512-JJl0quUQtIGIWxMj+BURlwY1mfvsUxq4fVLqbiFx+SrhA0JfQ00TPeUX5fIOFIm82Vu/2+bsgguWUtCkh32BFg==}
