@@ -32,4 +32,4 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: pnpx --yes semantic-release
+        run: pnpx --yes --package semantic-release-helm3 --package semantic-release semantic-release
