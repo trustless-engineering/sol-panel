@@ -40,7 +40,7 @@ jobs:
 
       - name: Create Index
         run: |
-          git remote add charts https://github.com/trustless-engineering/helm-charts.git && git fetch charts
+          git remote add charts https://morty-bot:${{ secrets.CHARTS_RELEASE_TOKEN }}@github.com/trustless-engineering/helm-charts.git && git fetch charts
           cr index -o trustless-engineering -r helm-charts -p .charts --index-path index.yaml --remote charts --push --token ${{ secrets.CHARTS_RELEASE_TOKEN }}
 
   build-and-push-image:
