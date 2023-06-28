@@ -125,7 +125,9 @@
       [
         "semantic-release-helm",
         {
-          "chartPath": "./deploy/chart"
+          "chartPath": "./deploy/chart",
+          "crPublish": true,
+          "crConfigPath": "./deploy/cr.yaml"
         }
       ]
     ]

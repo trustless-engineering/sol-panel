@@ -1,7 +1,9 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
 
 [ "$SKIP_HUSKY" = "true" ] && exit 0
+
+. "$(git rev-parse --show-toplevel)/_/husky.sh"
+
 
 
 echo '🏗️👷 Styling, testing and building your project before committing'
