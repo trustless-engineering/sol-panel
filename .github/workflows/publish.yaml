@@ -17,6 +17,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          ssh-key: "${{ secrets.RELEASE_KEY }}"
 
       - name: Configure Git
         run: |
@@ -40,7 +41,7 @@ jobs:
 
       - name: Create Index
         run: |
-          git remote add charts git@github.com:trustless-engineering/helm-charts.git
+          git remote add charts git@github.com:trustless-engineering/helm-charts.git && git fetch charts
           cr index -o trustless-engineering -r helm-charts -p .charts --remote charts --index-path index.yaml
 
   build-and-push-image:
