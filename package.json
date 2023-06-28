@@ -134,7 +134,17 @@
         }
       ],
       "@semantic-release/release-notes-generator",
-      "@semantic-release/github"
+      [
+        "@semantic-release/github",
+        {
+          "assets": [
+            {
+              "path": "deploy/chart/*.tgz",
+              "label": "Helm Chart"
+            }
+          ]
+        }
+      ]
     ]
   },
   "ts-node": {
