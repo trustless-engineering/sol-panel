@@ -125,16 +125,7 @@
         "prerelease": true
       }
     ],
-    "plugins": [
-      [
-        "semantic-release-helm3",
-        {
-          "chartPath": "./deploy/chart",
-          "crPublish": true,
-          "crConfigPath": "./deploy/cr.yaml"
-        }
-      ]
-    ]
+    "plugins": []
   },
   "ts-node": {
     "require": [

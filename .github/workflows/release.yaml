@@ -26,11 +26,12 @@ jobs:
       - uses: pnpm/action-setup@v2
       - name: Install dependencies
         run: pnpm install
-      - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.6.0
+      - name: Helm Chart Releaser
+        uses: helm/chart-releaser-action@v1.5.0
         with:
           install_only: true
+      - run: cr package --config deploy/cr.yaml
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: pnpm semantic-release
+        run: pnpx --yes semantic-release
