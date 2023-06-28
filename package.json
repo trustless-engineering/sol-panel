@@ -124,7 +124,7 @@
     ],
     "plugins": [
       [
-        "semantic-release-helm",
+        "semantic-release-helm3",
         {
           "chartPath": "./deploy/chart",
           "crPublish": true,
