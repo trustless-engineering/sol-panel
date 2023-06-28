@@ -40,7 +40,8 @@ jobs:
 
       - name: Create Index
         run: |
-          cr index -p .charts --index-path index.yaml
+          git remote add charts git@github.com:trustless-engineering/helm-charts.git
+          cr index -o trustless-engineering -r helm-charts -p .charts --remote charts --index-path index.yaml
 
   build-and-push-image:
     runs-on: self-hosted
