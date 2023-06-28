@@ -41,7 +41,8 @@ jobs:
 
       - name: Create Index
         run: |
-          cr index -o trustless-engineering -r helm-charts -p .charts --index-path index.yaml --push --token ${{ secrets.CHARTS_RELEASE_TOKEN }}
+          git remote add charts git@github.com:trustless-engineering/helm-charts.git
+          cr index -o trustless-engineering -r helm-charts -p .charts --index-path index.yaml --remote charts --push --token ${{ secrets.CHARTS_RELEASE_TOKEN }}
 
   build-and-push-image:
     runs-on: self-hosted
