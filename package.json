@@ -115,7 +115,7 @@
   },
   "packageManager": "pnpm@6.14.1",
   "release": {
-    "repositoryUrl": "git@github.com:trustless-engineering/sol-panel.git",
+    "repositoryUrl": "https://github.com/trustless-engineering/sol-panel.git",
     "branches": [
       "main",
       {
