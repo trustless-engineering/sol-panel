@@ -32,4 +32,6 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REGISTRY_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          REGISTRY_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: pnpx --yes --package semantic-release-helm3 --package semantic-release semantic-release
