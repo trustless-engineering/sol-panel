@@ -1,3 +1,4 @@
 owner: trustless-engineering
 git-repo: helm-charts
 chart-name: sol-panel
+repository-url: https://github.com/trustless-engineering/helm-charts
