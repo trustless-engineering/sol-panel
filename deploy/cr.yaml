@@ -1,2 +1,3 @@
 owner: trustless-engineering
 git-repo: helm-charts
+chart-name: sol-panel
