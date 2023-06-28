@@ -38,6 +38,10 @@ jobs:
         run: |
           cr upload -o trustless-engineering -r helm-charts -p .charts --token ${{ secrets.CHARTS_RELEASE_TOKEN }}
 
+      - name: Create Index
+        run: |
+          cr index -o trustless-engineering -r helm-charts -p .charts --index-path index.yaml
+
   build-and-push-image:
     runs-on: self-hosted
     permissions:
