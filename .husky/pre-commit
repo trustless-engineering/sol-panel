@@ -1,6 +1,9 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+[ "$SKIP_HUSKY" = "true" ] && exit 0
+
+
 echo '🏗️👷 Styling, testing and building your project before committing'
 
 # Check Prettier standards
