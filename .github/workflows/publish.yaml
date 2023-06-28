@@ -40,7 +40,7 @@ jobs:
 
       - name: Create Index
         run: |
-          cr index -o trustless-engineering -r helm-charts -p .charts --index-path index.yaml
+          cr index -p .charts --index-path index.yaml
 
   build-and-push-image:
     runs-on: self-hosted
