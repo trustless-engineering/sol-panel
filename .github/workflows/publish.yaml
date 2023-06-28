@@ -32,13 +32,11 @@ jobs:
           install_only: true
 
       - name: Build chart
-        run: |
-          helm dependency update deploy/chart
-          helm package deploy/chart
+        run: helm package -u deploy/chart -d .charts
 
       - name: Push chart
         run: |
-          cr upload -o trustless-engineering -r helm-charts -p deploy/chart --token ${{ secrets.CHARTS_RELEASE_TOKEN }}
+          cr upload -o trustless-engineering -r helm-charts -p .charts --token ${{ secrets.CHARTS_RELEASE_TOKEN }}
 
   build-and-push-image:
     runs-on: self-hosted
