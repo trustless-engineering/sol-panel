@@ -32,6 +32,9 @@ jobs:
       - name: package chart
         run: cr package --config deploy/cr.yaml deploy/chart
 
+      - name: upload chart
+        run: cr upload --config deploy/cr.yaml deploy/chart
+
       - name: Use PNPM
         uses: pnpm/action-setup@v2.1.0
         with:
