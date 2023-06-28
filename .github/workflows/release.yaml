@@ -30,7 +30,7 @@ jobs:
           install_only: true
 
       - name: package chart
-        run: cr package --config deploy/cr.yaml
+        run: cr package --config deploy/cr.yaml deploy/chart
 
       - name: Release
         env:
