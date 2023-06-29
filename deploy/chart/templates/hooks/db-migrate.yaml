@@ -14,7 +14,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: db-migrations
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}
         command: ["pnpm", "run", "db:migrate"]
         env:
           - name: DATABASE_URL
