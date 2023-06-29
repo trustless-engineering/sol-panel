@@ -16,4 +16,4 @@ spec:
       containers:
       - name: db-migrations
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-        command: ["pnpm", "run", "db:migrate"]
+        command: ["pnpm", "run", "deploy:migrate"]
