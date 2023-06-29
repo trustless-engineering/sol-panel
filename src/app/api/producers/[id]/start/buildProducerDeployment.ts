@@ -15,7 +15,6 @@ export const buildProducerConfigMap = async (producerId: string): Promise<V1Conf
     kind: "ConfigMap",
     metadata: {
       name: `producer-${producer.id}`,
-      namespace: "default",
       labels: {
         app: "sol-panel",
         component: "producer",
@@ -40,7 +39,6 @@ export const buildProducerDeployment = async (producerId: string): Promise<V1Dep
     kind: "Deployment",
     metadata: {
       name: `producer-${producer.id}`,
-      namespace: "default",
       labels: {
         app: "sol-panel",
         component: "producer",
