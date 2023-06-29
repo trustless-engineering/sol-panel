@@ -17,3 +17,8 @@ spec:
       - name: db-migrations
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         command: ["pnpm", "run", "deploy:migrate"]
+        env:
+          - name: DATABASE_URL
+            value: "postgresql://solpanel:thisisnotsecure@{{ .Release.Name }}-postgresql:5432/solpanel?schema=public"
+          - name: REDIS_URL
+            value: "redis://{{ .Release.Name }}-redis-master:6379"
