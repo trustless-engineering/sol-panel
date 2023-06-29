@@ -25,7 +25,8 @@ spec:
         - name: frontend
           image: {{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}
           ports:
-            - containerPort: 3000
+            - name: http
+              containerPort: 3000
           env:
             - name: DATABASE_URL
               value: "postgresql://solpanel:thisisnotsecure@{{ .Release.Name }}-postgresql:5432/solpanel?schema=public"
