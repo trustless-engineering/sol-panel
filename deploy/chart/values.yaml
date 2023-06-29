@@ -97,9 +97,6 @@ postgresql:
     database: solpanel
     username: solpanel
     password: thisisnotsecure
-  persistence:
-    enabled: true
-    size: 2Gi
 
 redis:
   auth:
