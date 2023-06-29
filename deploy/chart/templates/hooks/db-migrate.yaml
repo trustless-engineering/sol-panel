@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-migrate
+  labels:
+  annotations:
+    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook-weight": "-1"
+spec:
+  template:
+    metadata:
+      name: "{{ .Release.Name }}"
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: db-migrations
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        command: ["pnpm", "run", "db:migrate"]
+        env:
+          - name: DATABASE_URL
+            value: "postgresql://solpanel:thisisnotsecure@{{ .Release.Name }}-postgresql:5432/solpanel?schema=public"
+          - name: REDIS_URL
+            value: "redis://{{ .Release.Name }}-redis-master:6379"

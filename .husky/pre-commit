@@ -2,7 +2,7 @@
 
 [ "$SKIP_HUSKY" = "true" ] && exit 0
 
-. "$(git rev-parse --show-toplevel)/_/husky.sh"
+. "$(git rev-parse --show-toplevel)/.husky/_/husky.sh"
 
 
 
