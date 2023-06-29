@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "sol-panel.fullname" . }}-config
+data:
+  NODE_ENV: production
+  PORT: {{ .Values.service.port }}
+{{- range $k, $v := .Values.config.extraVars }}
+  {{ $k }}: {{ $v | quote }}
+{{- end }}    

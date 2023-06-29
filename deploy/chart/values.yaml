@@ -4,6 +4,10 @@
 
 replicaCount: 1
 
+config:
+  extraVars:
+    FOO: bar
+
 image:
   repository: ghcr.io/trustless-engineering/sol-panel
   pullPolicy: IfNotPresent
