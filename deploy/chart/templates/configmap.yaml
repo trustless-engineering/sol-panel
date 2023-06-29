@@ -4,7 +4,7 @@ metadata:
   name: {{ include "sol-panel.fullname" . }}-config
 data:
   NODE_ENV: production
-  PORT: {{ .Values.service.port }}
+  PORT: {{ .Values.service.port | quote }}
 {{- range $k, $v := .Values.config.extraVars }}
   {{ $k }}: {{ $v | quote }}
 {{- end }}    
