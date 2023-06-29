@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "{{ .Release.Name }}"
+  name: db-migrate
   labels:
   annotations:
     "helm.sh/hook": pre-install,pre-upgrade
@@ -16,7 +16,7 @@ spec:
       containers:
       - name: db-migrations
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-        command: ["pnpm", "run", "deploy:migrate"]
+        command: ["pnpm", "run", "db:migrate"]
         env:
           - name: DATABASE_URL
             value: "postgresql://solpanel:thisisnotsecure@{{ .Release.Name }}-postgresql:5432/solpanel?schema=public"
