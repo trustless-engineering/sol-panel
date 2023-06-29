@@ -9,6 +9,7 @@ spec:
   selector:
     matchLabels:
       {{- include "sol-panel.selectorLabels" . | nindent 6 }}
+      component: frontend
   template:
     metadata:
       {{- with .Values.podAnnotations }}
