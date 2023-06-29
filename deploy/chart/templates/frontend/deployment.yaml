@@ -1,19 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: {{ include "sol-panel.fullname" . }}
   labels:
-    app: sol-panel
+    {{- include "sol-panel.labels" . | nindent 4 }}
     component: frontend
 spec:
   selector:
     matchLabels:
-      app: sol-panel
+      {{- include "sol-panel.selectorLabels" . | nindent 6 }}
       component: frontend
   template:
     metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       labels:
-        app: sol-panel
+        {{- include "sol-panel.selectorLabels" . | nindent 8 }}
         component: frontend
     spec:
       serviceAccountName: {{ include "sol-panel.serviceAccountName" . }}
@@ -21,7 +25,8 @@ spec:
         - name: frontend
           image: {{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}
           ports:
-            - containerPort: 3000
+            - name: http
+              containerPort: 3000
           env:
             - name: DATABASE_URL
               value: "postgresql://solpanel:thisisnotsecure@{{ .Release.Name }}-postgresql:5432/solpanel?schema=public"

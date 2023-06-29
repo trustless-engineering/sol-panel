@@ -4,7 +4,7 @@ metadata:
   name: db-migrate
   labels:
   annotations:
-    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook": post-upgrade
     "helm.sh/hook-weight": "-1"
 spec:
   template:
@@ -14,7 +14,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: db-migrations
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}
         command: ["pnpm", "run", "db:migrate"]
         env:
           - name: DATABASE_URL
