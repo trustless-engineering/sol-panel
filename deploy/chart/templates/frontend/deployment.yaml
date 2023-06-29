@@ -1,19 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: {{ include "sol-panel.fullname" . }}
   labels:
-    app: sol-panel
+    {{- include "sol-panel.labels" . | nindent 4 }}
     component: frontend
 spec:
   selector:
     matchLabels:
-      app: sol-panel
-      component: frontend
+      {{- include "sol-panel.selectorLabels" . | nindent 6 }}
   template:
     metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       labels:
-        app: sol-panel
+        {{- include "sol-panel.selectorLabels" . | nindent 8 }}
         component: frontend
     spec:
       serviceAccountName: {{ include "sol-panel.serviceAccountName" . }}
