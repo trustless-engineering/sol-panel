@@ -28,9 +28,9 @@ model Plugin {
 }
 
 model Producer {
-  id         String  @id @default(cuid())
+  id         String @id @default(cuid())
   providerId String
-  streamId   String?
+  streamId   String
 
   name   String
   config Json?
@@ -40,7 +40,13 @@ model Producer {
   deletedAt DateTime @default(now())
 
   provider ProducerProvider @relation(fields: [providerId], references: [id])
-  stream   Stream?          @relation(fields: [streamId], references: [id])
+  stream   Stream           @relation(fields: [streamId], references: [id])
+}
+
+enum ProducerType {
+  WEBHOOK
+  SCRIPT
+  CONTAINER
 }
 
 model ProducerProvider {

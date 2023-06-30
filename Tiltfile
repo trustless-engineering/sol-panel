@@ -1,10 +1,13 @@
 # -*- mode: Python -*
 
 k8s_yaml(helm('./deploy/chart', name='local'))
-k8s_resource('frontend', port_forwards=3000)
-k8s_resource('local-faktory', port_forwards=[7420, 7419])
-k8s_resource('local-postgresql', port_forwards=5432)
-k8s_resource('local-redis-master', port_forwards=6379)
+
+k8s_resource('local-sol-panel', port_forwards=3000, labels=['frontend'])
+
+k8s_resource('local-faktory', port_forwards=[7420, 7419], labels=['infra'])
+k8s_resource('local-postgresql', port_forwards=5432, labels=['infra'])
+k8s_resource('local-redis-master', port_forwards=6379, labels=['infra'])
+k8s_resource('local-redis-replicas', labels=['infra'])
 
 docker_build('ghcr.io/trustless-engineering/sol-panel', '.',
     build_args={'node_env': 'development'},

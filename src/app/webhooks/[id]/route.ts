@@ -19,7 +19,7 @@ interface WebhookRequestParams {
 const sendMessage = async (streamId: string, message: any): Promise<void> => {
   await redisClient.connect();
   try {
-    await redisClient.xAdd(`webhooks:${streamId}`, "*", { message: JSON.stringify(message) });
+    await redisClient.xAdd(`${streamId}`, "*", { message: JSON.stringify(message) });
   } catch (e) {
     console.log("Failed to send message to redis", e);
   } finally {
@@ -47,7 +47,7 @@ export async function POST(request: NextRequest, { params }: { params: WebhookRe
 
     const body = await request.json();
 
-    await sendMessage(params.id, body);
+    await sendMessage(producer.streamId, body);
 
     return new Response(
       JSON.stringify({
