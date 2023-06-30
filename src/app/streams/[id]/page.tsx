@@ -22,7 +22,6 @@ const getStats = async (id: string): Promise<any[]> => {
 export default function StreamPage({ params }: { params: { id: string } }): React.JSX.Element {
   const { data: stream, isLoading, error } = useSWR(params.id, getStream);
   const [stats, setStats] = useState<any>();
-
   useEffect(() => {
     getStats(params.id)
       .then((data) => {
