@@ -3,6 +3,8 @@
 import { type Producer } from "@prisma/client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
+import { synthwave84 as theme } from "react-syntax-highlighter/dist/esm/styles/prism";
 import useSWR from "swr";
 
 const getStream = async (id: string): Promise<any | null> => {
@@ -20,6 +22,7 @@ const getStats = async (id: string): Promise<any[]> => {
 export default function StreamPage({ params }: { params: { id: string } }): React.JSX.Element {
   const { data: stream, isLoading, error } = useSWR(params.id, getStream);
   const [stats, setStats] = useState<any>();
+
   useEffect(() => {
     getStats(params.id)
       .then((data) => {
@@ -37,8 +40,8 @@ export default function StreamPage({ params }: { params: { id: string } }): Reac
   }
 
   return (
-    <div className="flex flex-col items-center p-2 justify-self-stretch bg-base-200">
-      <div className="card w-full shadow-xl bg-base-100">
+    <div className="flex flex-col items-center p-2 justify-self-stretch">
+      <div className="card w-full shadow-xl bg-base-200">
         <div className="card-body">
           <h1 className="card-title">
             <div className="flex w-full justify-between">
@@ -71,6 +74,20 @@ export default function StreamPage({ params }: { params: { id: string } }): Reac
                 <div className="stat-title">Consumers</div>
                 <div className="stat-value">{stream.consumers?.length || 0}</div>
                 <div className="stat-desc">Total number of consumers in stream</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col pt-4">
+            <div className="last-event w-1/2">
+              <div className="flex items-baseline gap-2">
+                <span className="text-primary-content">Last Event ID: </span>
+                <pre>{stats?.last10[0].id}</pre>
+              </div>
+              <div className="code rounded-md">
+                <SyntaxHighlighter language="json5" style={theme}>
+                  {JSON.stringify(stats?.last10[0].message, null, 2)}
+                </SyntaxHighlighter>
               </div>
             </div>
           </div>
