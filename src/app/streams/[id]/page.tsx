@@ -1,6 +1,7 @@
 "use client";
 
 import { type Producer } from "@prisma/client";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 
@@ -92,7 +93,11 @@ export default function StreamPage({ params }: { params: { id: string } }): Reac
                     {stream.producers?.map((producer: Producer) => {
                       return (
                         <tr key={producer.id}>
-                          <td>{producer.name}</td>
+                          <td>
+                            <Link className="link" href={`/producers/${producer.id}`}>
+                              {producer.name}
+                            </Link>
+                          </td>
                           <td>{producer.type}</td>
                           <td>{producer.createdAt.toLocaleString()}</td>
                           <td>

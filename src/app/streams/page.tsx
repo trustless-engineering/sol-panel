@@ -20,10 +20,12 @@ export default function StreamsIndex(): React.JSX.Element {
   }, []);
 
   return (
-    <div className="flex flex-col items-center p-2 justify-self-stretch bg-base-200">
-      <h1 className="text-2xl font-bold">Active Streams</h1>
-      <div className="card w-full shadow-xl bg-base-100">
+    <div className="flex flex-col items-center m-4 justify-self-stretch">
+      <div className="card w-full shadow-xl bg-base-200">
         <div className="card-body">
+          <div className="card-title">
+            <h1 className="text-2xl font-bold">Active Streams</h1>
+          </div>
           <div className="overflow-x-auto">
             <table className="table">
               {/* head */}
