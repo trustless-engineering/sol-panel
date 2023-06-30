@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { ConsumerType, PrismaClient, ProducerType } from "@prisma/client";
 
 const plugins = [
   {
@@ -8,9 +8,11 @@ const plugins = [
     ProducerProviders: [
       {
         name: "Core RPC",
+        type: ProducerType.CONTAINER,
       },
       {
         name: "Webhook",
+        type: ProducerType.WEBHOOK,
         configTemplate: {
           url: "https://example.com",
           method: "POST",
@@ -23,12 +25,15 @@ const plugins = [
     ConsumerProviders: [
       {
         name: "Webhook",
+        type: ConsumerType.WEBHOOK,
       },
       {
         name: "Script",
+        type: ConsumerType.SCRIPT,
       },
       {
-        name: "Database",
+        name: "Container",
+        type: ConsumerType.CONTAINER,
       },
     ],
   },
@@ -50,10 +55,10 @@ const main = async (): Promise<void> => {
         name: plugin.name,
         description: plugin.description,
         version: plugin.version,
-        ProducerProvider: {
+        producers: {
           create: plugin.ProducerProviders,
         },
-        ConsumerProvider: {
+        consumers: {
           create: plugin.ConsumerProviders,
         },
       },
@@ -79,6 +84,7 @@ const main = async (): Promise<void> => {
     const producer = await prisma.producer.create({
       data: {
         name: "Webhook Producer",
+        type: ProducerType.WEBHOOK,
         provider: {
           connect: {
             id: webhookProvider?.id,

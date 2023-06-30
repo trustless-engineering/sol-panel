@@ -1,44 +1,112 @@
-import { PrismaClient } from "@prisma/client";
+"use client";
 
-const prisma = new PrismaClient();
+import { type Producer } from "@prisma/client";
+import { useEffect, useState } from "react";
+import useSWR from "swr";
 
-export default async function StreamPage({ params }: { params: { id: string } }): Promise<React.JSX.Element> {
-  const stream = await prisma.stream.findUnique({
-    where: {
-      id: params.id,
-    },
-    include: {
-      producers: true,
-    },
-  });
+const getStream = async (id: string): Promise<any | null> => {
+  const res = await fetch(`/api/streams/${id}`);
+  const data = await res.json();
+  return data;
+};
 
-  if (stream == null) {
-    return <div>Stream not found</div>;
+const getStats = async (id: string): Promise<any[]> => {
+  const res = await fetch(`/api/streams/${id}/stats`);
+  const data = await res.json();
+  return data;
+};
+
+export default function StreamPage({ params }: { params: { id: string } }): React.JSX.Element {
+  const { data: stream, isLoading, error } = useSWR(params.id, getStream);
+  const [stats, setStats] = useState<any>();
+  useEffect(() => {
+    getStats(params.id)
+      .then((data) => {
+        setStats(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [stream]);
+
+  if (error) return <div>failed to load</div>;
+
+  if (isLoading) {
+    return <div className="loading"></div>;
   }
 
   return (
     <div className="flex flex-col items-center p-2 justify-self-stretch bg-base-200">
-      <h1 className="text-4xl font-bold mb-4">{stream.name}</h1>
       <div className="card w-full shadow-xl bg-base-100">
         <div className="card-body">
+          <h1 className="card-title">
+            <div className="flex w-full justify-between">
+              <div className="title flex items-center">
+                <span className="pr-2 text-4xl">{stream.name}</span>
+                {stream.enabled ? <span className="badge badge-success">active</span> : <span className="badge badge-error">inactive</span>}
+              </div>
+              <div className="options join">
+                <button className="join-item btn btn-primary">Pause</button>
+                <button className="join-item btn btn-outline btn-accent">Edit</button>
+              </div>
+            </div>
+          </h1>
           {stream.description}
+          <div className="flex flex-row">
+            <div className="stats shadow">
+              <div className="stat">
+                <div className="stat-title">Total Events</div>
+                <div className="stat-value">{stats?.length}</div>
+                <div className="stat-desc">Total number of events in stream</div>
+              </div>
+
+              <div className="stat">
+                <div className="stat-title">Producers</div>
+                <div className="stat-value">{stream.producers?.length || 0}</div>
+                <div className="stat-desc">Total number of producers in stream</div>
+              </div>
+
+              <div className="stat">
+                <div className="stat-title">Consumers</div>
+                <div className="stat-value">{stream.consumers?.length || 0}</div>
+                <div className="stat-desc">Total number of consumers in stream</div>
+              </div>
+            </div>
+          </div>
+
           <div className="divider"></div>
           <div className="grid grid-cols-2 gap-2">
             <div className="flex flex-col">
-              {stream.producers?.map((producer: any) => {
-                return (
-                  <div key={producer.id} className="flex flex-row w-1/2 bg-base-200 justify-between">
-                    <div className="flex flex-col">
-                      <p className="text-sm">Name: {producer.name}</p>
-                      <p className="text-sm">Created: {(producer.createdAt as Date).toLocaleString()}</p>
-                    </div>
-                    <div className="flex flex-row">
-                      <button className="btn btn-xs btn-outline btn-accent">Edit</button>
-                      <button className="btn btn-xs btn-outline btn-accent">Delete</button>
-                    </div>
-                  </div>
-                );
-              })}
+              <div className="overflow-x-auto">
+                <span className="text-2xl">Producers</span>
+                <table className="table w-full bg-base-200 rounded-xl p-4 mt-2">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Created</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {stream.producers?.map((producer: Producer) => {
+                      return (
+                        <tr key={producer.id}>
+                          <td>{producer.name}</td>
+                          <td>{producer.type}</td>
+                          <td>{producer.createdAt.toLocaleString()}</td>
+                          <td>
+                            <div className="join">
+                              <button className="btn btn-xs btn-outline btn-accent join-item">Edit</button>
+                              <button className="btn btn-xs btn-outline btn-error join-item">Delete</button>
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
               <div className="flex flex-row mt-4">
                 <button className="btn btn-sm btn-accent">Add Producer</button>
               </div>

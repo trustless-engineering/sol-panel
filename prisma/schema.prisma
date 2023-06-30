@@ -21,10 +21,16 @@ model Plugin {
   version     String
   config      Json?
 
-  updatedAt        DateTime           @updatedAt
-  deletedAt        DateTime           @default(now())
-  ProducerProvider ProducerProvider[]
-  ConsumerProvider ConsumerProvider[]
+  updatedAt DateTime           @updatedAt
+  deletedAt DateTime           @default(now())
+  producers ProducerProvider[]
+  consumers ConsumerProvider[]
+}
+
+enum ProducerType {
+  WEBHOOK
+  SCRIPT
+  CONTAINER
 }
 
 model Producer {
@@ -33,6 +39,7 @@ model Producer {
   streamId   String
 
   name   String
+  type   ProducerType
   config Json?
 
   createdAt DateTime @default(now())
@@ -43,17 +50,12 @@ model Producer {
   stream   Stream           @relation(fields: [streamId], references: [id])
 }
 
-enum ProducerType {
-  WEBHOOK
-  SCRIPT
-  CONTAINER
-}
-
 model ProducerProvider {
-  id     String @id @default(cuid())
+  id     String       @id @default(cuid())
   name   String
+  type   ProducerType
   config Json?
-  plugin Plugin @relation(fields: [pluginId], references: [id])
+  plugin Plugin       @relation(fields: [pluginId], references: [id])
 
   instances      Producer[]
   configTemplate Json?
@@ -65,12 +67,19 @@ model ProducerProvider {
   deletedAt DateTime @default(now())
 }
 
+enum ConsumerType {
+  WEBHOOK
+  SCRIPT
+  CONTAINER
+}
+
 model Consumer {
   id String @id @default(cuid())
 
   createdAt DateTime @default(now())
 
   name        String
+  type        ConsumerType
   description String?
   config      Json?
 
@@ -88,6 +97,7 @@ model ConsumerProvider {
   plugin Plugin @relation(fields: [pluginId], references: [id])
 
   name        String
+  type        ConsumerType
   description String?
   config      Json?
   instances   Consumer[]
