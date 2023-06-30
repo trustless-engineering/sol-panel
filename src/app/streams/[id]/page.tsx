@@ -13,7 +13,7 @@ const getStream = async (id: string): Promise<any | null> => {
   return data;
 };
 
-const getStats = async (id: string): Promise<any[]> => {
+const getStats = async (id: string): Promise<any> => {
   const res = await fetch(`/api/streams/${id}/stats`);
   const data = await res.json();
   return data;
@@ -22,10 +22,13 @@ const getStats = async (id: string): Promise<any[]> => {
 export default function StreamPage({ params }: { params: { id: string } }): React.JSX.Element {
   const { data: stream, isLoading, error } = useSWR(params.id, getStream);
   const [stats, setStats] = useState<any>();
+  const [lastMessage, setLastMessage] = useState<any>();
   useEffect(() => {
     getStats(params.id)
       .then((data) => {
         setStats(data);
+        const last = data.last10[0].message;
+        setLastMessage(JSON.parse(last.message));
       })
       .catch((err) => {
         console.error(err);
@@ -85,7 +88,7 @@ export default function StreamPage({ params }: { params: { id: string } }): Reac
               </div>
               <div className="code rounded-md">
                 <SyntaxHighlighter language="json5" style={theme}>
-                  {JSON.stringify(stats?.last10[0].message, null, 2)}
+                  {JSON.stringify(lastMessage, null, 2)}
                 </SyntaxHighlighter>
               </div>
             </div>
