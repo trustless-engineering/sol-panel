@@ -90,7 +90,6 @@ export default function StreamPage({ params }: { params: { id: string } }): Reac
               </div>
             </div>
           </div>
-
           <div className="divider"></div>
           <div className="grid grid-cols-2 gap-2">
             <div className="flex flex-col">

@@ -16,7 +16,7 @@ After the codespace is started, you can spin the cluster and start the applicati
 
 ### Create Cluster
 
-`ctlptl create cluster kind --registry=ctlptl-registry`
+`ctlptl apply -f docs/development/cluster.yml`
 
 ### Start Application
 
