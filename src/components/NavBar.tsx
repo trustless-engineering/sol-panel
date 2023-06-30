@@ -20,10 +20,10 @@ export default function NavBar(): React.JSX.Element {
               <summary>Settings</summary>
               <ul className="bg-base-100 p-2">
                 <li>
-                  <Link href="/settings">General</Link>
+                  <Link href="/streams">Streams</Link>
                 </li>
                 <li>
-                  <Link href="/settings/rpc">RPC</Link>
+                  <Link href="/producers">Producers</Link>
                 </li>
               </ul>
             </details>
