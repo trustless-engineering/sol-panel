@@ -54,7 +54,7 @@ specifiers:
   lodash: ^4.17.21
   next: 13.4.0
   next-pwa: ^5.6.0
-  next-seo: ^5.15.0
+  next-seo: ^6.1.0
   next-sitemap: ^3.1.55
   next-themes: ^0.2.1
   overlayscrollbars: ^2.2.0
@@ -125,7 +125,7 @@ dependencies:
   lodash: 4.17.21
   next: 13.4.0_react-dom@18.2.0+react@18.2.0
   next-pwa: 5.6.0_next@13.4.0
-  next-seo: 5.15.0_76fc8eb5a863ec93ac4de0417e3c4dad
+  next-seo: 6.1.0_76fc8eb5a863ec93ac4de0417e3c4dad
   next-sitemap: 3.1.55_next@13.4.0
   next-themes: 0.2.1_76fc8eb5a863ec93ac4de0417e3c4dad
   overlayscrollbars: 2.2.0
@@ -7803,8 +7803,8 @@ packages:
       - webpack
     dev: false
 
-  /next-seo/5.15.0_76fc8eb5a863ec93ac4de0417e3c4dad:
-    resolution: {integrity: sha512-LGbcY91yDKGMb7YI+28n3g+RuChUkt6pXNpa8FkfKkEmNiJkeRDEXTnnjVtwT9FmMhG6NH8qwHTelGrlYm9rgg==}
+  /next-seo/6.1.0_76fc8eb5a863ec93ac4de0417e3c4dad:
+    resolution: {integrity: sha512-iMBpFoJsR5zWhguHJvsoBDxDSmdYTHtnVPB1ij+CD0NReQCP78ZxxbdL9qkKIf4oEuZEqZkrjAQLB0bkII7RYA==}
     peerDependencies:
       next: ^8.1.1-canary.54 || >=9.0.0
       react: '>=16.0.0'
