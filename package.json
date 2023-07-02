@@ -15,6 +15,7 @@
     "test-all": "pnpm run check-format && pnpm run check-lint && pnpm run check-types && pnpm run build",
     "prepare": "husky install",
     "db:migrate": "prisma migrate deploy",
+    "db:seed": "prisma db seed",
     "worker:webhooks": "ts-node -r tsconfig-paths/register ./src/executors/webhooks.ts"
   },
   "dependencies": {
