@@ -1,5 +1,10 @@
 # -*- mode: Python -*
+load('ext://min_k8s_version', 'min_k8s_version')
 load('ext://uibutton', 'cmd_button', 'text_input', 'location')
+load('ext://min_tilt_version', 'min_tilt_version')
+
+min_tilt_version('0.13')
+min_k8s_version('1.27')
 
 k8s_yaml(helm('./deploy/chart', name='local'))
 
