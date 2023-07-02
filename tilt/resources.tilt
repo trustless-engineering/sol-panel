@@ -1,0 +1,4 @@
+k8s_resource('local-sol-panel', new_name='frontend', port_forwards=3000, labels=['frontend'])
+k8s_resource('local-faktory', new_name='faktory', port_forwards=[7420, 7419], labels=['infra'])
+k8s_resource('local-postgresql', new_name='pgsql', port_forwards=5432, labels=['infra'])
+k8s_resource('local-redis-master', new_name='redis', port_forwards=6379, labels=['infra'])

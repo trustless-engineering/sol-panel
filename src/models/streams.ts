@@ -1,3 +1,4 @@
+import { averageRate } from "@/models/streams/stats";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
@@ -13,10 +14,12 @@ const xprisma = prisma.$extends({
   },
   result: {
     stream: {
-      friendlyId: {
+      averageRate: {
         needs: { id: true },
-        compute(stream): string {
-          return `stream.${stream.id}`;
+        compute(stream) {
+          return async () => {
+            return await averageRate(stream.id);
+          };
         },
       },
     },
