@@ -1,0 +1,10 @@
+load('ext://uibutton', 'cmd_button', 'text_input', 'location')
+
+## Reset DB
+cmd_button('reset-db',
+	requires_confirmation=True,
+	argv=['sh', '-c', 'pnpm db:reset'],
+	location=location.NAV,
+	icon_name='settings_backup_restore',
+	text='Reset DB',
+)

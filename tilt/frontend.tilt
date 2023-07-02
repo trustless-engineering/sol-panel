@@ -1,0 +1,9 @@
+docker_build('ghcr.io/trustless-engineering/sol-panel', '..',
+	build_args={'node_env': 'development'},
+	entrypoint='pnpm dev',
+	target='dev',
+	live_update=[
+		sync('./src', '/app/src'),
+		run('cd /app && pnpm install', trigger=['./package.json', './pnpm-lock.yaml']),
+	]
+)

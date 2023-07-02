@@ -1,23 +1,10 @@
-"use client";
+import Streams from "@/models/streams";
+import Link from "next/link";
 
 import { type Stream } from "@prisma/client";
-import Link from "next/link";
-import { useEffect, useState } from "react";
 
-export default function StreamsIndex(): React.JSX.Element {
-  const [streams, setStreams] = useState<Stream[]>([]);
-
-  const fetchStreams = async (): Promise<void> => {
-    const res = await fetch("/api/streams");
-    const data = await res.json();
-    setStreams(data);
-  };
-
-  useEffect(() => {
-    void fetchStreams().then(() => {
-      console.log("Streams fetched");
-    });
-  }, []);
+export default async function StreamsIndex() {
+  const streams = await Streams.findMany();
 
   return (
     <div className="flex flex-col items-center m-4 justify-self-stretch">
