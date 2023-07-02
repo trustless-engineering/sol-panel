@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "pnpm prisma generate && pnpm next dev",
+    "dev:repl": "pnpm ts-node ./src/utils/repl.ts",
     "build": "pnpm next build",
     "start": "pnpm next start",
     "start:prod": "pnpm run build && pnpm run start",
