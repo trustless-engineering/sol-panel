@@ -1,4 +1,5 @@
 # -*- mode: Python -*
+load('ext://uibutton', 'cmd_button', 'text_input', 'location')
 
 k8s_yaml(helm('./deploy/chart', name='local'))
 
@@ -17,6 +18,16 @@ docker_build('ghcr.io/trustless-engineering/sol-panel', '.',
         sync('./src', '/app/src'),
         run('cd /app && pnpm install', trigger=['./package.json', './pnpm-lock.yaml']),
 ])
+
+## Buttons
+
+cmd_button('reset-db',
+        requires_confirmation=True,
+        argv=['sh', '-c', 'pnpm db:migrate && pnpm db:seed'],
+        location=location.NAV,
+        icon_name='settings_backup_restore',
+        text='Reset DB',
+)
 
 ## Dev Tooling
 local_resource('prisma studio', serve_cmd='pnpm prisma studio --port 5555 --browser none', auto_init=False)

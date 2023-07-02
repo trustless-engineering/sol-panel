@@ -12,6 +12,7 @@ module.exports = {
   extends: ["standard-with-typescript", "plugin:react/recommended", "next/core-web-vitals", "prettier"],
   plugins: ["react"],
   rules: {
+    "no-html-link-for-pages": "off",
     "react-hooks/exhaustive-deps": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
