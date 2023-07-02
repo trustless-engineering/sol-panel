@@ -12,6 +12,10 @@ deploy/chart/Chart.lock
 # testing
 /coverage
 
+# cypress artifacts
+/cypress/screenshots
+/cypress/videos
+
 # next.js
 /.next/
 /out/
