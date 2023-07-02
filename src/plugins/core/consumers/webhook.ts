@@ -1,4 +1,4 @@
-import { streamConsumerGroup } from "@/utils/streamConsumerGroup";
+import { streamConsumerGroup } from "@/utils/redis/streamConsumerGroup";
 import { PrismaClient, type Consumer } from "@prisma/client";
 
 interface SetupOptions {

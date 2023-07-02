@@ -1,0 +1,11 @@
+## Prisma Studio
+local_resource('prisma studio', 
+	serve_cmd='pnpm prisma studio --port 5555 --browser none', 
+	auto_init=False
+)
+
+## Cypress Studio
+local_resource('cypress studio', 
+  serve_cmd='pnpm cypress open', 
+  auto_init=False
+)

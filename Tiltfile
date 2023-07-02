@@ -1,38 +1,23 @@
 # -*- mode: Python -*
 load('ext://min_k8s_version', 'min_k8s_version')
-load('ext://uibutton', 'cmd_button', 'text_input', 'location')
 load('ext://min_tilt_version', 'min_tilt_version')
 
+
+## Ensure minimum versions
 min_tilt_version('0.13')
 min_k8s_version('1.27')
 
+## Load the Helm chart
 k8s_yaml(helm('./deploy/chart', name='local'))
 
-k8s_resource('local-sol-panel', port_forwards=3000, labels=['frontend'])
+## Load the frontend
+load_dynamic('./tilt/frontend.tilt')
 
-k8s_resource('local-faktory', port_forwards=[7420, 7419], labels=['infra'])
-k8s_resource('local-postgresql', port_forwards=5432, labels=['infra'])
-k8s_resource('local-redis-master', port_forwards=6379, labels=['infra'])
-k8s_resource('local-redis-replicas', labels=['infra'])
+## Include the secondary resources
+load_dynamic('./tilt/resources.tilt')
 
-docker_build('ghcr.io/trustless-engineering/sol-panel', '.',
-    build_args={'node_env': 'development'},
-    entrypoint='pnpm dev',
-    target='dev',
-    live_update=[
-        sync('./src', '/app/src'),
-        run('cd /app && pnpm install', trigger=['./package.json', './pnpm-lock.yaml']),
-])
+## Include tooling
+load_dynamic('./tilt/tools.tilt')
 
-## Buttons
-
-cmd_button('reset-db',
-        requires_confirmation=True,
-        argv=['sh', '-c', 'pnpm db:migrate && pnpm db:seed'],
-        location=location.NAV,
-        icon_name='settings_backup_restore',
-        text='Reset DB',
-)
-
-## Dev Tooling
-local_resource('prisma studio', serve_cmd='pnpm prisma studio --port 5555 --browser none', auto_init=False)
+## Include nav buttons
+load_dynamic('./tilt/nav_buttons.tilt')
