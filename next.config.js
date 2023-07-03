@@ -1,12 +1,10 @@
 /** @type {import('next').NextConfig} */
 
-const { version } = require("./package.json");
-
 const nextConfig = {
-  poweredByHeader: false,
-  publicRuntimeConfig: {
-    version,
-  },
+	poweredByHeader: false,
+	experimental: {
+		typedRoutes: true,
+	},
 };
 
 module.exports = nextConfig;
