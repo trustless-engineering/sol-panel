@@ -74,8 +74,8 @@ SOL Panel wouldn't be possible without the massive support we receive from the c
       <center>
          <a href="https://www.latitude.sh">
             <picture>
-              <source media="(prefers-color-scheme: dark)" srcset="./docs/sponsors/latitudesh-logotype-light.svg">
-              <img src="./docs/sponsors/latitudesh-logotype-dark.svg" width="350">
+              <source media="(prefers-color-scheme: dark)" srcset="/docs/sponsors/latitudesh-logotype-light.svg">
+              <img src="/docs/sponsors/latitudesh-logotype-dark.svg" width="350">
             </picture>
          </a>
       </center>
