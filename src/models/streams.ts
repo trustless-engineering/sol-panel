@@ -18,7 +18,7 @@ const xprisma = prisma.$extends({
 				needs: { id: true },
 				compute(stream) {
 					return async () => {
-						return await averageRate(stream.id);
+						return averageRate(stream.id);
 					};
 				},
 			},

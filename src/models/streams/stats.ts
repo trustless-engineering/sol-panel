@@ -1,7 +1,7 @@
 import { withClient } from 'utils/redis';
 
 export async function averageRate(streamId: string) {
-	return await withClient(async (client) => {
+	return withClient(async (client) => {
 		// Get the list of messages in the stream
 		const messages = await client.xRange(streamId, '-', '+');
 
@@ -34,14 +34,14 @@ export async function averageRate(streamId: string) {
 }
 
 export async function getStreamLength(streamId: string) {
-	return await withClient(async (client) => {
+	return withClient(async (client) => {
 		const messages = await client.xRange(streamId, '-', '+');
 		return messages.length;
 	});
 }
 
 export async function getStreamRange(streamId: string, start: string, end: string) {
-	return await withClient(async (client) => {
+	return withClient(async (client) => {
 		const messages = await client.xRange(streamId, start, end);
 		return messages;
 	});

@@ -1,7 +1,7 @@
 import Footer from './Footer';
 
 describe('<Footer />', () => {
-	it('renders', () => {
-		cy.mount(<Footer />);
+	it('renders', async () => {
+		cy.mount(await (<Footer />));
 	});
 });

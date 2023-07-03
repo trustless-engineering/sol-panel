@@ -10,7 +10,7 @@ module.exports = {
 		ecmaFeatures: {
 			jsx: true,
 		},
-		project: './tsconfig.lint.json',
+		project: './tsconfig.eslint.json',
 	},
 	extends: ['standard-with-typescript', 'plugin:react/recommended', 'next/core-web-vitals', 'prettier'],
 	plugins: ['react', '@typescript-eslint', 'prettier', 'react-hooks'],
@@ -18,6 +18,14 @@ module.exports = {
 		cy: true,
 		Cypress: true,
 	},
+	overrides: [
+		{
+			files: ['**/*.cy.tsx'],
+			rules: {
+				'@typescript-eslint/await-thenable': 'off',
+			},
+		},
+	],
 	rules: {
 		'@next/next/no-html-link-for-pages': 'off',
 		'react-hooks/exhaustive-deps': 'off',
