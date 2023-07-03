@@ -21,6 +21,7 @@
 		"platformAutomerge": true
 	},
 	"separateMajorMinor": false,
+	"seperatePatchReleases": true,
 	"packageRules": [
 		{
 			"matchDepTypes": ["devDependencies"],
