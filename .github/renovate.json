@@ -14,18 +14,30 @@
 	],
 	"lockFileMaintenance": {
 		"commitMessageAction": "Update",
-		"extends": ["group:all"],
+		"extends": [
+			"group:all"
+		],
 		"enabled": true,
 		"automerge": true,
 		"automergeType": "pr",
 		"platformAutomerge": true
 	},
 	"separateMajorMinor": false,
-	"seperatePatchReleases": true,
+	"constraints": {
+		"node": {
+			"automerge": true,
+			"required": "~20.2.0"
+		}
+	},
 	"packageRules": [
 		{
-			"matchDepTypes": ["devDependencies"],
-			"matchPackagePatterns": ["lint", "prettier"],
+			"matchDepTypes": [
+				"devDependencies"
+			],
+			"matchPackagePatterns": [
+				"lint",
+				"prettier"
+			],
 			"automerge": true
 		}
 	]
