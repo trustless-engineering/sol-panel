@@ -1,0 +1,24 @@
+name: Unit Tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - next
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: node:20.2
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: corepack pnpm install
+
+      - name: Run tests
+        run: corepack pnpm test

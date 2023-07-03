@@ -5,7 +5,7 @@ load('ext://min_tilt_version', 'min_tilt_version')
 
 ## Ensure minimum versions
 min_tilt_version('0.13')
-min_k8s_version('1.27')
+min_k8s_version('1.26')
 
 ## Load the Helm chart
 k8s_yaml(helm('./deploy/chart', name='local'))
