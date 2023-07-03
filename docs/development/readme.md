@@ -12,11 +12,15 @@ After the codespace is started, you can spin the cluster and start the applicati
 
 ### Seed Databases
 
-`pnpm prisma generate`
+```terminal
+pnpm prisma generate
+```
 
 ### Create Cluster
 
-`ctlptl apply -f docs/development/cluster.yml`
+```terminal
+ctlptl apply -f docs/development/cluster.yml
+```
 
 ### Start Application
 
