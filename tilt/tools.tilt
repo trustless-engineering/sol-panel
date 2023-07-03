@@ -9,3 +9,10 @@ local_resource('cypress studio',
   serve_cmd='pnpm cypress open', 
   auto_init=False
 )
+
+## Docsify
+local_resource('docsify',
+  links=['http://localhost:3010'],
+  serve_cmd='pnpm docsify serve docs --port 3010', 
+  auto_init=False
+)
