@@ -1,4 +1,4 @@
-name: Unit Tests
+name: Tests
 
 on:
   pull_request:
@@ -8,7 +8,8 @@ on:
       - next
 
 jobs:
-  build:
+  unit:
+    name: Unit Tests
     runs-on: ubuntu-latest
     container: node:20.2
     steps:

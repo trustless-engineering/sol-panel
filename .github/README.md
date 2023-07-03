@@ -1,5 +1,14 @@
 # SOL Panel
 
+<div align="center">
+
+![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/w/trustless-engineering/sol-panel)
+![GitHub commits since latest release (by SemVer including pre-releases)](https://img.shields.io/github/commits-since/trustless-engineering/sol-panel/v1.0.0-next.1/next)
+![GitHub release (with filter)](https://img.shields.io/github/v/release/trustless-engineering/sol-panel?filter=v*-next.*&label=latest%20pre-release&color=%238705E4)
+![LICENSE](https://img.shields.io/github/license/trustless-engineering/sol-panel?link=https%3A%2F%2Fgithub.com%2Ftrustless-engineering%2Fsol-panel%2Fblob%2Fnext%2FLICENSE)
+
+</div>
+
  <picture>
   <img src="/docs/images/github.png">
 </picture>
