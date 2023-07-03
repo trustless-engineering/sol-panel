@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/base:ubuntu
+FROM mcr.microsoft.com/devcontainers/base:ubuntu@sha256:3cb26c96497bfc785273ed8f2aa6983a68f26138dbf119b4444421d434037700
 RUN curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
 RUN apt update -y && apt install -y curl jq git unzip build-essential tar apt-transport-https
 
