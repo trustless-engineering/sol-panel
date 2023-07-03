@@ -38,6 +38,12 @@
 				"prettier"
 			],
 			"automerge": true
+		},
+		{
+			"matchPackageNames": [
+				"node"
+			],
+			"allowedVersions": "< 20.3.0"
 		}
 	]
 }
