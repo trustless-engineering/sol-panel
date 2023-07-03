@@ -1,6 +1,7 @@
 'use client';
 
 import { type Producer } from '@prisma/client';
+import { type Route } from 'next';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -38,7 +39,7 @@ export default function ProducersIndex(): React.JSX.Element {
 									return (
 										<tr key={producer.id}>
 											<td>
-												<Link className='link link-accent' href={`/producers/${producer.id}`}>
+												<Link className='link link-accent' href={('/producers/' + producer.id) as Route}>
 													{producer.name}
 												</Link>
 											</td>

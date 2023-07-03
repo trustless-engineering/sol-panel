@@ -19,7 +19,7 @@ const getStats = async (id: string): Promise<any> => {
 	return data;
 };
 
-export default function StreamPage({ params }: { params: { id: string } }): React.JSX.Element {
+export default function StreamPage({ params }: { params: { id: string } }) {
 	const { data: stream, isLoading, error } = useSWR(params.id, getStream);
 	const [stats, setStats] = useState<any>();
 	const [lastMessage, setLastMessage] = useState<any>();
