@@ -1,17 +1,20 @@
 ## Prisma Studio
 local_resource('prisma studio', 
+  labels=['tools'],
 	serve_cmd='pnpm prisma studio --port 5555 --browser none', 
 	auto_init=False
 )
 
 ## Cypress Studio
-local_resource('cypress studio', 
+local_resource('cypress studio',
+  labels=['tools'],
   serve_cmd='pnpm cypress open', 
   auto_init=False
 )
 
 ## Docsify
 local_resource('docsify',
+  labels=['tools'],
   links=['http://localhost:3010'],
   serve_cmd='pnpm docsify serve docs --port 3010', 
   auto_init=False
