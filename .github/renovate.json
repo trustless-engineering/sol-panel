@@ -20,6 +20,8 @@
 	"configMigration": true,
 	"labels": ["renovate"],
 	"prHourlyLimit": 0,
+	"ignoreUnstable": true,
+	"ignoreDeprecated": true,
 	"platformCommit": true,
 	"assigneesFromCodeOwners": true,
 	"reviewersFromCodeOwners": true,
