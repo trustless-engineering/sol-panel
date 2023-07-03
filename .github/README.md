@@ -1,7 +1,7 @@
 # SOL Panel
 
  <picture>
-  <img src="./docs/images/github.png">
+  <img src="/docs/images/github.png">
 </picture>
 
 ## Description
