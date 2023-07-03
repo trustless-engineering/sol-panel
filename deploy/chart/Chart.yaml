@@ -1,6 +1,7 @@
 apiVersion: v2
 name: sol-panel
 description: Sol Panel is a web-based tool for managing Solana RPC Nodes
+icon: https://raw.githubusercontent.com/trustless-engineering/sol-panel/main/public/favicon.ico
 
 # A chart can be either an 'application' or a 'library' chart.
 #
