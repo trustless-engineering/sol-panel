@@ -7,7 +7,8 @@
 		"helpers:pinGitHubActionDigests",
 		":pinAllExceptPeerDependencies",
 		":preserveSemverRanges",
-		"group:all",
+		"group:definitelyTyped",
+		"group:nodeJs",
 		"schedule:monthly",
 		":maintainLockFilesMonthly"
 	],
