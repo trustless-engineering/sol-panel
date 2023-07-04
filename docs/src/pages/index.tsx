@@ -26,7 +26,7 @@ function HomepageHeader() {
 
 export default function Home() {
 	return (
-		<Layout title={`Home`} description='Description will go into a meta tag in <head />'>
+		<Layout title={`Home`} description='SOL Panel Documentation'>
 			<HomepageHeader />
 			<main>
 				<HomepageFeatures />
