@@ -1,0 +1,22 @@
+---
+sidebar_position: 2
+---
+
+import RequiredVersion from '@site/src/components/RequiredVersion';
+
+# Production
+
+## Pre-Flight
+
+SOL Panel is deployed to a Kubernetes cluster, and this is the primary dependency to running SOL Panel.
+
+SOL Panel currently requires Kubernetes <RequiredVersion component="kubernetes" /> or higher. Most cloud providers can satisify this requirement.
+
+## Using Helm (recommended)
+
+To install SOL Panel on a Kubernetes <RequiredVersion component="kubernetes" />+ cluster, we recommend using Helm:
+
+```bash
+helm repo add trustless-engineering https://charts.trustless.engineering
+helm install trustless-engineering/sol-panel
+```
