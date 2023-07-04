@@ -6,7 +6,7 @@ on:
       - main
       - next
     paths:
-      - '.github/workflows/deploy.yml'
+      - '.github/workflows/docs.yaml'
       - 'docs/**'
   pull_request:
 
