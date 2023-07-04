@@ -5,23 +5,19 @@ import styles from './styles.module.css';
 
 const FeatureList = [
 	{
+		title: 'Cloud Native by Design',
+		Svg: require('@site/static/img/undraw_cloud_hosting.svg').default,
+		description: <>SOL Panel is designed for the modern age. And can be installed in minutes on all major cloud platforms.</>,
+	},
+	{
 		title: 'Open Source and Free',
-		Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-		description: <>SOL Panel is an open source project, and is available for free.</>,
+		Svg: require('@site/static/img/undraw_open_source.svg').default,
+		description: <>SOL Panel is licensed with the Apache 2.0 license to ensure that anyone can easily build and acccess data on Solana.</>,
 	},
 	{
-		title: 'Focus on What Matters',
-		Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-		description: (
-			<>
-				Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go ahead and move your docs into the <code>docs</code> directory.
-			</>
-		),
-	},
-	{
-		title: 'Powered by Enterprise-Grade Technology',
-		Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-		description: <>Extend or customize your website layout by reusing React. Docusaurus can be extended while reusing the same header and footer.</>,
+		title: 'Community Plugins',
+		Svg: require('@site/static/img/undraw_monitor.svg').default,
+		description: <>Extend SOL Panel with community plugins that enable complex pipeline creation in just a few clicks.</>,
 	},
 ];
 

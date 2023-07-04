@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: 'SOL Panel',
-	tagline: 'Solana data pipelines for everyone.',
+	tagline: 'Open source Solana data pipeline platform',
 	trailingSlash: false,
 	favicon: 'img/favicon.ico',
 	url: 'https://docs.solpanel.io',
