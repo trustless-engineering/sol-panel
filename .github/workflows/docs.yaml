@@ -1,13 +1,31 @@
-name: Deploy to GitHub Pages
+name: Documentation
 
 on:
   push:
     branches:
+      - main
       - next
 
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+
+  merge_group:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  deploy:
-    name: Deploy to GitHub Pages
+  build:
+    name: Build
     runs-on: ubuntu-latest
     container: node:20.2
 
@@ -24,6 +42,11 @@ jobs:
           cd docs
           corepack pnpm build
 
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    container: node:20.2
+    steps:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
