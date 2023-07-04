@@ -8,11 +8,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
 	title: 'SOL Panel',
 	tagline: 'Solana data pipelines for everyone.',
+	trailingSlash: false,
 	favicon: 'img/favicon.ico',
 	url: 'https://docs.solpanel.io',
 	baseUrl: '/',
 	organizationName: 'trustless-engineering',
-	projectName: 'sol-panel',
+	projectName: 'sol-panel.github.io',
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'throw',
 	i18n: {
