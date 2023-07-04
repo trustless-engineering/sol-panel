@@ -6,17 +6,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no" />
 		<meta name="description" content="Documentation for SOL Panel, a tool for managing data pipelines in Solana." />
 		<title>SOL Panel</title>
-
 		<!-- 1. Theme -->
-		<link rel="stylesheet" href="https://unpkg.com/docsify-themeable/dist/css/theme-simple.css" />
+		<!-- <link rel="stylesheet" href="https://unpkg.com/docsify-themeable/dist/css/theme-simple.css" /> -->
 		<link rel="stylesheet" href="https://unpkg.com/docsify-themeable/dist/css/theme-simple-dark.css" />
-		<!-- <link rel="stylesheet" href="https://unpkg.com/docsify-themeable/dist/css/theme-defaults.css"> -->
-
-		<!-- 2. PrismJS Themes -->
-		<!-- <link rel="stylesheet" href="https://unpkg.com/prism-github/prism-github.css"> -->
-		<!-- <link rel="stylesheet" href="https://unpkg.com/prism-theme-one-dark/prism-onedark.css"> -->
-
-		<!-- 3. Custom Theme Properties -->
 		<style>
 			:root {
 				/* Reduce the font size */
@@ -30,30 +22,71 @@
 				/* --sidebar-nav-link-before-content-l2: "💩"; */
 			}
 		</style>
+
+		<link rel="stylesheet" href="assets/termynal/termynal.css" />
+		<link rel="stylesheet" href="assets/termynal/custom.css" />
 	</head>
 	<body>
-		<div id="app"></div>
+		<div id="app">Please wait...</div>
 		<script>
 			window.$docsify = {
 				name: 'SOL Panel',
 				repo: 'trustless-engineering/sol-panel',
-				loadSidebar: true,
-				loadNavbar: true,
-				subMaxLevel: 2,
+				loadSidebar: 'sidebar.md',
+				loadNavbar: 'navbar.md',
+				coverpage: 'coverpage.md',
+				subMaxLevel: 3,
 				auto2top: true,
 				search: 'auto',
+				tabs: {
+					theme: 'material',
+				},
+				footer: {
+					copy: '<span>Corner Store on Mars Foundation &copy; 2023</span>',
+					auth: 'by the <a href="https://trustless.engineering">Trustless Engineering Project</a>',
+					style: 'text-align: right;',
+				},
+				mustache: {
+					data: [
+						'vars.json',
+						{
+							question: 'What is your favorite number?',
+						},
+					],
+				},
+				plugins: [
+					function (hook, vm) {
+						/*termynal.js*/
+						hook.beforeEach(function (content) {
+							return beforeEach(content);
+						});
+						hook.doneEach(function () {
+							setupTermynal();
+							showRandomAnnouncement('announce-left', 5000);
+							showRandomAnnouncement('announce-right', 10000);
+						});
+					},
+				],
 			};
 		</script>
-		<script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
 
 		<!-- Docsify v4 -->
 		<script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+
+		<!-- Plugins -->
 		<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
 		<script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
 		<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
 		<script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/docsify-terminal-block@1.0.3"></script>
+		<script src="//cdn.jsdelivr.net/npm/docsify-terminal-block@1.0.3"></script>
+		<script src="//cdn.jsdelivr.net/npm/docsify-example-panels"></script>
+		<script src="//cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+		<script src="//unpkg.com/docsify-footer-enh/dist/docsify-footer-enh.min.js"></script>
+		<script src="//raw.githubusercontent.com/stijn-dejongh/docsify-glossary/main/example/docsify-glossary.min.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/docsify-mustache"></script>
 
-		<div id="app">Please wait...</div>
+		<!--termynal.js-->
+		<script src="assets/termynal/termynal.js"></script>
+		<script src="assets/termynal/custom.js"></script>
 	</body>
 </html>

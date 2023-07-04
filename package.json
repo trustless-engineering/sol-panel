@@ -12,6 +12,7 @@
 		"db:seed": "prisma db seed",
 		"dev:repl": "ts-node -r tsconfig-paths/register ./src/utils/repl.ts",
 		"dev": "prisma generate && next dev",
+		"docs:serve": "docsify serve docs --port 3010",
 		"format": "prettier --write .",
 		"lint": "next lint",
 		"prepare": "husky install",

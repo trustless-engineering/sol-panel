@@ -1,2 +1,2 @@
-- Home
+- [Home](#/?id=main)
   - [Getting Started](getting-started.md)
