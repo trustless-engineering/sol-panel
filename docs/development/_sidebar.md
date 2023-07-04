@@ -1,2 +1,0 @@
-- Environments
-  - [Github Codespaces](/development/dev-envs.md)
