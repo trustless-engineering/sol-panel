@@ -8,3 +8,6 @@ public
 deploy
 
 .github/renovate.json
+
+docs/build
+docs/.docusaurus
