@@ -6,5 +6,5 @@ sidebar_position: 1
 
 There are two primary ways of deploying SOL Panel, in an ephemeral (short-lived) state or in a persistent (long-term) state.
 
-- [Ephemeral](quick-start)
-- [Persistent](production)
+- [Ephemeral](installation/quick-start)
+- [Persistent](installation/production)

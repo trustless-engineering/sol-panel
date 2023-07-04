@@ -1,33 +1,61 @@
-name: Deploy to GitHub Pages
+name: Docs
 
 on:
   push:
     branches:
-      - next
+      - main
+    paths:
+      - '.github/workflows/deploy.yml'
+      - 'docs/**'
+  pull_request:
 
 jobs:
   deploy:
-    name: Deploy to GitHub Pages
-    runs-on: ubuntu-latest
-    container: node:20.2
-
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    defaults:
+      run:
+        working-directory: docs
     steps:
-      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
+      - uses: actions/checkout@v3
 
-      - name: Enable Corepack
-        run: corepack enable
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.2
 
-      - run: corepack pnpm install
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          run_install: false
 
-      - name: Build Docusaurus
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
         run: |
-          cd docs
-          corepack pnpm build
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
-      - name: Deploy to GitHub Pages
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm build
+
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/next'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
-          user_name: github-actions[bot]
-          user_email: 41898282+github-actions[bot]@users.noreply.github.com
+          publish_dir: ./docs/build
