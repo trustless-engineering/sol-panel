@@ -28,6 +28,32 @@
 	</head>
 	<body>
 		<div id="app">Please wait...</div>
+		<!-- Start Single Page Apps for GitHub Pages -->
+		<script type="text/javascript">
+			// Single Page Apps for GitHub Pages
+			// MIT License
+			// https://github.com/rafgraph/spa-github-pages
+			// This script checks to see if a redirect is present in the query string,
+			// converts it back into the correct url and adds it to the
+			// browser's history using window.history.replaceState(...),
+			// which won't cause the browser to attempt to load the new url.
+			// When the single page app is loaded further down in this file,
+			// the correct url will be waiting in the browser's history for
+			// the single page app to route accordingly.
+			(function (l) {
+				if (l.search[1] === '/') {
+					var decoded = l.search
+						.slice(1)
+						.split('&')
+						.map(function (s) {
+							return s.replace(/~and~/g, '&');
+						})
+						.join('?');
+					window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+				}
+			})(window.location);
+		</script>
+		<!-- End Single Page Apps for GitHub Pages -->
 		<script>
 			window.$docsify = {
 				name: 'SOL Panel',
@@ -35,6 +61,7 @@
 				loadSidebar: 'sidebar.md',
 				loadNavbar: 'navbar.md',
 				coverpage: 'coverpage.md',
+				routerMode: 'history',
 				subMaxLevel: 3,
 				auto2top: true,
 				search: 'auto',
@@ -47,12 +74,20 @@
 					style: 'text-align: right;',
 				},
 				mustache: {
+					noPackage: true,
 					data: [
 						'vars.json',
 						{
 							question: 'What is your favorite number?',
 						},
 					],
+				},
+				mermaidConfig: {
+					querySelector: '.mermaid',
+				},
+				glossify: {
+					debug: true,
+					terminologyHeading: '###',
 				},
 				plugins: [
 					function (hook, vm) {
@@ -82,8 +117,14 @@
 		<script src="//cdn.jsdelivr.net/npm/docsify-example-panels"></script>
 		<script src="//cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
 		<script src="//unpkg.com/docsify-footer-enh/dist/docsify-footer-enh.min.js"></script>
-		<script src="//raw.githubusercontent.com/stijn-dejongh/docsify-glossary/main/example/docsify-glossary.min.js"></script>
+		<script src="assets/glossary/plugin.js"></script>
 		<script src="//cdn.jsdelivr.net/npm/docsify-mustache"></script>
+		<script type="module">
+			import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+			mermaid.initialize({ startOnLoad: true });
+			window.mermaid = mermaid;
+		</script>
+		<script src="//unpkg.com/docsify-mermaid@2.0.0/dist/docsify-mermaid.js"></script>
 
 		<!--termynal.js-->
 		<script src="assets/termynal/termynal.js"></script>
