@@ -32,7 +32,7 @@ const config = {
 			({
 				docs: {
 					sidebarPath: require.resolve('./sidebars.js'),
-					editUrl: 'https://github.com/trustless-engineering/sol-panel/tree/main/docs/',
+					editUrl: 'https://github.com/trustless-engineering/sol-panel/tree/next/docs/',
 				},
 				blog: {
 					showReadingTime: true,
