@@ -49,6 +49,9 @@ const config = {
 			searchParameters: {},
 			searchPagePath: 'search',
 		},
+		colorMode: {
+			respectPrefersColorScheme: false,
+		},
 		docs: {
 			sidebar: {
 				autoCollapseCategories: false,
@@ -56,6 +59,7 @@ const config = {
 		},
 		image: 'img/solpanel-social-card.png',
 		navbar: {
+			style: 'primary',
 			title: 'SOL Panel',
 			logo: {
 				alt: 'SOL Panel Logo',
@@ -77,6 +81,7 @@ const config = {
 			],
 		},
 		footer: {
+			style: 'light',
 			logo: {
 				alt: 'SOL Panel',
 				src: 'img/favicon-96x96.png',
