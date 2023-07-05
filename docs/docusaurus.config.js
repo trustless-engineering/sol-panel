@@ -98,10 +98,6 @@ const config = {
 					title: 'Community',
 					items: [
 						{
-							label: 'Stack Overflow',
-							href: 'https://stackoverflow.com/questions/tagged/sol-panel',
-						},
-						{
 							label: 'Discord',
 							href: 'https://discord.gg/ZtzNueuB',
 						},
