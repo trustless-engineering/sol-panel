@@ -11,7 +11,8 @@
 		"clear": "docusaurus clear",
 		"serve": "docusaurus serve",
 		"write-translations": "docusaurus write-translations",
-		"write-heading-ids": "docusaurus write-heading-ids"
+		"write-heading-ids": "docusaurus write-heading-ids",
+		"search:update-index": "docker run -it --env-file=.env -e 'CONFIG=$(cat ./search_index.json | jq -r tostring)' algolia/docsearch-scraper"
 	},
 	"dependencies": {
 		"@docusaurus/core": "2.4.1",

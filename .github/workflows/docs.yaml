@@ -12,6 +12,7 @@ on:
 
 jobs:
   deploy:
+    name: Deploy
     runs-on: ubuntu-22.04
     permissions:
       contents: write
@@ -60,3 +61,15 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/build
+
+  update-search-index:
+    name: Update Search Index
+    runs-on: ubuntu-22.04
+    if: github.ref == 'refs/heads/next'
+    needs: deploy
+    steps:
+      - name: Update Search Index
+        uses: darrenjennings/algolia-docsearch-action@master
+        with:
+          algolia_application_id: ${{ secrets.ALGOLIA_APP_ID }}
+          algolia_api_key: ${{ secrets.ALGOLIA_API_KEY }}

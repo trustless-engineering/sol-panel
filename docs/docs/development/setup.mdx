@@ -1,0 +1,68 @@
+---
+title: Setup
+sidebar_position: 2
+---
+
+import RequiredVersion from '@site/src/components/RequiredVersion';
+
+Contributing to SOL Panel is easiest done via Github Codespaces.
+Simply create a new Codespace from this branch and all the dependencies will be pre-configured for you.
+You can then connect directly to the Codespace from VS Code.
+
+## Requirements
+
+- Kubernetes <RequiredVersion component="kubernetes" />+ Cluster
+-
+
+## Recommended Setups
+
+There are various tooling configurations that work with developing on SOL Panel.
+Some are better than others, and some can lead to hours of headaches.
+
+### Github Codespaces
+
+Github Codespaces allow anyone with a browser to contribute to SOL Panel! You can be building pipelines in just a few minutes by clicking the button below.
+
+:::tip Launch SOL Panel Codespace
+
+**_NOTE:_** A codespace with **_4 CPU/8GB RAM_** minimum is highly suggested. The number of dependencies within the Helm chart make 4GB of RAM simply too little.
+
+[![Start SOL Panel Development](https://github.com/codespaces/badge.svg)](https://codespaces.new/trustless-engineering/sol-panel?quickstart=1)
+
+:::
+
+### Tilt
+
+[Tilt](https://tilt.dev) is a project that enables local development of a Kubernetes cluster. It does this by running a Kind cluster inside of Docker.
+
+Installing Tilt can be done by following the instructions for your operating system [here](https://docs.tilt.dev/install.html).
+
+## First Time Initialization
+
+After you first clone the repo, you will need to run a few commands to get started.
+
+#### Seed Databases
+
+Seeding the database provides you with some sane defaults to start with:
+
+```bash
+pnpm prisma db seed
+```
+
+#### Create Cluster
+
+```bash
+ctlptl apply -f docs/development/cluster.yml
+```
+
+#### Start Application
+
+```bash
+tilt up
+```
+
+After a few moments, the application will be available at `http://localhost:3000`.
+
+# Making Changes
+
+Any changes made in your local environment will automatically be copied into the running container, no rebuilding required!

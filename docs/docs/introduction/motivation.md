@@ -1,0 +1,14 @@
+---
+title: Motivation
+sidebar_position: 1
+---
+
+SOL Panel was developed in response to the challenges posed by Solana data providers, characterized by their unstable services and inconsistent APIs.
+These issues significantly hinder the development of robust and long-lasting applications on top of these systems and make onboarding into Solana as a developer even more difficult.
+
+The motivation behind SOL Panel is to address these limitations and provide a unified solution for developers seeking to build persistent applications on diverse SaaS platforms. By consolidating and streamlining the integration process, SOL Panel aims to simplify the development workflow and enhance reliability across various Solana (and other) data providers.
+
+#### Primary Goals
+
+- Provide a consistent API for developers to interact with Solana data providers
+- Build a thriving ecosystem of community-built plugins and extensions
