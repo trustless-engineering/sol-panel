@@ -50,14 +50,14 @@ export default function DocItemLayout({ children }) {
 					<Giscus
 						id='comments'
 						repo='trustless-engineering/sol-panel'
-						repoId='R_kgDOJsJcLg='
+						repoId='R_kgDOJsJcLg'
 						category='Documentation'
 						categoryId='DIC_kwDOJsJcLs4CXrtC'
 						mapping='pathname'
+						data-strict='1'
 						reactionsEnabled='1'
 						emitMetadata='1'
 						inputPosition='top'
-						term='Welcome to SOL Panel!'
 						theme={colorMode}
 						lang='en'
 						loading='lazy'
