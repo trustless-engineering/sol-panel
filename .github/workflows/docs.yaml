@@ -68,6 +68,7 @@ jobs:
     if: github.ref == 'refs/heads/next'
     needs: deploy
     steps:
+      - uses: actions/checkout@v3
       - name: Update Search Index
         uses: darrenjennings/algolia-docsearch-action@master
         with:
