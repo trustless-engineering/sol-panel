@@ -1,8 +1,8 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require('prism-react-renderer/themes/shadesOfPurple');
+const darkCodeTheme = require('prism-react-renderer/themes/synthwave84');
 
 const config = {
 	title: 'SOL Panel',
@@ -59,7 +59,7 @@ const config = {
 			title: 'SOL Panel',
 			logo: {
 				alt: 'SOL Panel Logo',
-				src: 'img/logo.svg',
+				src: 'img/favicon-96x96.png',
 			},
 			items: [
 				{
@@ -70,13 +70,20 @@ const config = {
 				{ to: '/blog', label: 'Blog', position: 'left' },
 				{
 					href: 'https://github.com/trustless-engineering/sol-panel',
-					label: 'Github',
+					className: 'header-github-link',
+					'aria-label': 'GitHub repository',
 					position: 'right',
 				},
 			],
 		},
 		footer: {
-			style: 'dark',
+			logo: {
+				alt: 'SOL Panel',
+				src: 'img/favicon-96x96.png',
+				href: 'https://solpanel.io/',
+				width: 96,
+				height: 96,
+			},
 			links: [
 				{
 					title: 'Docs',
@@ -101,6 +108,15 @@ const config = {
 						{
 							label: 'Twitter',
 							href: 'https://twitter.com/trustlesseng',
+						},
+					],
+				},
+				{
+					title: 'Sponsors',
+					items: [
+						{
+							label: 'Latitude.sh',
+							href: 'https://latitude.sh',
 						},
 					],
 				},
