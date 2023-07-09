@@ -17,7 +17,7 @@ export default function NewProducer(): React.JSX.Element {
 			streamId: '',
 			name: data.name,
 			type: ProducerType.WEBHOOK,
-			config: '',
+			config: data.config,
 			createdAt: new Date(),
 			updatedAt: new Date(),
 			deletedAt: new Date(),
