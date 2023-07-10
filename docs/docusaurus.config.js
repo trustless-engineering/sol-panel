@@ -42,13 +42,14 @@ const config = {
 	],
 	themeConfig: {
 		algolia: {
-			appId: 'JV4GGZ8R9C',
-			apiKey: 'bf3178766726891779cd67820b5b1fa5',
-			indexName: 'solpanel_docs',
+			appId: 'R0QX7KZ4K2',
+			apiKey: 'bcf8874ce4c700d259f9106d87ecf64d',
+			indexName: 'solpanel',
 			contextualSearch: true,
 			searchParameters: {},
 			searchPagePath: 'search',
 		},
+
 		colorMode: {
 			respectPrefersColorScheme: false,
 		},
