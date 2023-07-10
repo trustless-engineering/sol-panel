@@ -84,7 +84,7 @@ export default function StreamPage({ params }: { params: { id: string } }) {
 						<div className='last-event w-1/2'>
 							<div className='flex items-baseline gap-2'>
 								<span className='text-primary-content'>Last Event ID: </span>
-								<pre>{stats?.last10[0].id}</pre>
+								<pre>{stats?.last10[0] && stats?.last10[0].id}</pre>
 							</div>
 							<div className='code rounded-md'>
 								<SyntaxHighlighter language='json5' style={theme}>

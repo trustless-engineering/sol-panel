@@ -1,20 +1,18 @@
 import { streamConsumerGroup } from 'utils/redis/streamConsumerGroup';
 import { PrismaClient, type Consumer } from '@prisma/client';
+import { type SetupOptions } from 'plugins/types';
 
-interface SetupOptions {
-	consumerId: string;
-	groupName: string;
-	consumerName: string;
+interface WebhookSetupOptions extends SetupOptions {
 	url: string;
 }
 
 let consumer: Consumer;
-let options: SetupOptions;
+let options: WebhookSetupOptions;
 
 // TODO: This should actually pull from streams. We should lookup the stream and generate a new consumer group for it
 //
 
-const setup = async (opts: SetupOptions): Promise<void> => {
+const setup = async (opts: WebhookSetupOptions): Promise<void> => {
 	const { consumerId } = (options = opts);
 	const prisma = new PrismaClient();
 	consumer = await prisma.consumer.findFirstOrThrow({

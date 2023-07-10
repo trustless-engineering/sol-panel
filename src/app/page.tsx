@@ -1,22 +1,30 @@
-export default function Home(): React.JSX.Element {
+import Streams from 'models/streams';
+
+export default async function Home() {
+	const streams = await Streams.findMany({});
+
 	return (
 		<div className='container'>
 			<div className='flex'>
 				<div className='flex-1'>
 					<h1 className='text-4xl font-bold'>Streams</h1>
-					<div className='card'>
-						<div className='card-body'>
-							<div className='card-title'>
-								<h2 className='text-2xl font-bold'>Stream 1</h2>
+					{streams.map((stream) => {
+						return (
+							<div key={stream.id} className='card bg-base-200 w-96'>
+								<div className='card-body'>
+									<div className='card-title'>
+										<h2 className='text-2xl font-bold'>{stream.name}</h2>
+									</div>
+									<div className='card-text'>
+										<p>{stream.description}</p>
+									</div>
+									<div className='card-actions'>
+										<div className='btn btn-accent'>Details</div>
+									</div>
+								</div>
 							</div>
-							<div className='card-text'>
-								<p>Stream 1 description</p>
-							</div>
-							<div className='card-actions'>
-								<div className='button'>Check</div>
-							</div>
-						</div>
-					</div>
+						);
+					})}
 				</div>
 			</div>
 		</div>
