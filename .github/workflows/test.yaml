@@ -8,6 +8,22 @@ on:
       - next
 
 jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Install dependencies
+        run: corepack pnpm install
+      - name: Build
+        run: corepack pnpm build
+
   unit:
     name: Unit Tests
     runs-on: ubuntu-latest
