@@ -11,8 +11,8 @@ on:
   pull_request:
 
 jobs:
-  deploy:
-    name: Deploy
+  build:
+    name: Build
     runs-on: ubuntu-22.04
     permissions:
       contents: write
@@ -55,23 +55,32 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: docs-output
+          path: |
+            ./docs/build
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    defaults:
+      run:
+        working-directory: docs
+    needs: build
+    steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: docs-output
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/next'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/build
-
-  update-search-index:
-    name: Update Search Index
-    runs-on: ubuntu-22.04
-    if: github.ref == 'refs/heads/next'
-    needs: deploy
-    steps:
-      - uses: actions/checkout@v3
-      - name: Update Search Index
-        uses: darrenjennings/algolia-docsearch-action@master
-        with:
-          algolia_application_id: ${{ secrets.ALGOLIA_APP_ID }}
-          algolia_api_key: ${{ secrets.ALGOLIA_API_KEY }}
-          file: ./docs/search_index.json
