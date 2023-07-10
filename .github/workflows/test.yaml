@@ -43,7 +43,7 @@ jobs:
           DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
           REDIS_URL: redis://redis:6379
         run: |
-          corepack pnpm prisma migrate
+          corepack pnpm prisma migrate reset
           corepack pnpm build
 
   unit:
