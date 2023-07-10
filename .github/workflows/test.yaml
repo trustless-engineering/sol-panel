@@ -15,6 +15,23 @@ jobs:
       contents: write
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
+    container: node:20.2
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis
     steps:
       - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
       - name: Enable Corepack
@@ -22,6 +39,9 @@ jobs:
       - name: Install dependencies
         run: corepack pnpm install
       - name: Build
+        env:
+          DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
+          REDIS_URL: redis://redis:6379
         run: corepack pnpm build
 
   unit:
