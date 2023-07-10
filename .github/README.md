@@ -9,10 +9,6 @@
 
 </div>
 
- <picture>
-  <img src="/docs/images/github.png">
-</picture>
-
 ## Description
 
 SOL Panel is an open-source composability platform designed to simplify the creation and orchestration of data pipelines from Solana.
@@ -26,52 +22,13 @@ SOL Panel is an open-source composability platform designed to simplify the crea
 - Specialized for Solana: Focused support and tools specifically for the Solana blockchain.
 - Low-Code/No-Code System: Utilize a collection of plugins to construct APIs, webhooks, and event streams without the need for extensive coding.
 
-# Installation
+# Documentation
 
-Follow these steps to install SOL Panel:
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/trustless-engineering/sol-panel.git
-```
-
-2. Change into the directory
-
-```bash
-cd sol-panel
-```
-
-3. Install pre-requisites
-
-```
-pnpm
-```
-
-# Running
-
-Make sure to copy `./docs/.env.example` to `.env` and change the values appropriately!
-
-```bash
-pnpm start && open http://localhost:3000
-```
-
-Once started, you can set up an RPC node to start streaming `blockSubscribe` messages to your ingestion pipelines via a [dedicated RPC node](https://github.com/trustless-engineering/sol-panel/wiki/Setup-Dedicated-Solana-RPC-Node-as-Data-Source).
+Documentation for SOL Panel can be found at [solpanel.io/docs/](https://solpanel.io/docs/).
 
 # Contributing
 
 Contributions from the community are welcome. If you're interested in contributing, please reach out in our [Discord](https://discord.gg/xRRKucEMzz).
-
-## Setup for Mac OS X
-
-Install the dependencies first:
-
-```
-brew install --cask docker
-brew install ctlptl kind tilt
-```
-
-The best way to get started is to install [Tilt.dev](https://docs.tilt.dev/install.html) and then run `tilt up` in the repo. Everything wi
 
 # Sponsors
 
@@ -83,8 +40,8 @@ SOL Panel wouldn't be possible without the massive support we receive from the c
       <center>
          <a href="https://www.latitude.sh">
             <picture>
-              <source media="(prefers-color-scheme: dark)" srcset="/docs/sponsors/latitudesh-logotype-light.svg">
-              <img src="/docs/sponsors/latitudesh-logotype-dark.svg" width="350">
+              <source media="(prefers-color-scheme: dark)" srcset="https://solpanel.io/img/sponsors/latitudesh-logotype-light.svg">
+              <img src="https://solpanel.io/img/sponsors/latitudesh-logotype-dark.svg" width="350">
             </picture>
          </a>
       </center>

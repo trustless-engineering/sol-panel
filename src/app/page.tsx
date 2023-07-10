@@ -1,18 +1,22 @@
-import Link from 'next/link';
-
 export default function Home(): React.JSX.Element {
 	return (
-		<div className='hero min-h-screen bg-base-200'>
-			<div className='hero-content text-center'>
-				<div className='max-w-full'>
-					<h1 className='text-5xl font-bold'>SOL Panel</h1>
-					<p className='py-6'>
-						SOL Panel is a composability platform for Solana. With official and community plugins you can create your own dedicated Solana API infrastructure in
-						a just a few clicks!
-					</p>
-					<Link className='btn-primary btn' href='/setup'>
-						Get Started
-					</Link>
+		<div className='container'>
+			<div className='flex'>
+				<div className='flex-1'>
+					<h1 className='text-4xl font-bold'>Streams</h1>
+					<div className='card'>
+						<div className='card-body'>
+							<div className='card-title'>
+								<h2 className='text-2xl font-bold'>Stream 1</h2>
+							</div>
+							<div className='card-text'>
+								<p>Stream 1 description</p>
+							</div>
+							<div className='card-actions'>
+								<div className='button'>Check</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -1,30 +1,4 @@
 {
-	"name": "sol-panel",
-	"version": "0.1.0",
-	"private": true,
-	"scripts": {
-		"build": "next build",
-		"check": "pnpm run '/^check:.*/'",
-		"check:format": "prettier --check .",
-		"check:lint": "eslint --ext .tsx,.ts .",
-		"check:types": "tsc --pretty --noEmit",
-		"db:migrate": "prisma migrate deploy",
-		"db:reset": "prisma migrate reset --force",
-		"db:seed": "prisma db seed",
-		"dev:repl": "ts-node -r tsconfig-paths/register ./src/utils/repl.ts",
-		"dev": "prisma generate && next dev",
-		"docs:serve": "pnpm -C docs run start --no-open --port 3001",
-		"format": "prettier --write .",
-		"lint": "next lint",
-		"prepare": "husky install",
-		"start:prod": "pnpm run build && pnpm run start",
-		"start": "next start",
-		"test": "pnpm run '/^test:.*/'",
-		"test:components": "cypress run --component",
-		"test:e2e": "cypress run --e2e",
-		"test:unit": "jest",
-		"worker:webhooks": "ts-node -r tsconfig-paths/register ./src/executors/webhooks.ts"
-	},
 	"dependencies": {
 		"@kubernetes/client-node": "^0.18.1",
 		"@prisma/client": "^4.16.2",
@@ -84,7 +58,30 @@
 	"engines": {
 		"node": "20.2.0"
 	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged",
+			"pre-push": "pnpm run test-all"
+		}
+	},
+	"lint-staged": {
+		"*.{css,scss,less}": [
+			"prettier --write"
+		],
+		"*.{js,jsx,ts,tsx}": [
+			"eslint --fix",
+			"prettier --write"
+		],
+		"*.{json,md,yml,yaml}": [
+			"prettier --write"
+		]
+	},
+	"name": "sol-panel",
 	"packageManager": "pnpm@8.6.7",
+	"prisma": {
+		"seed": "ts-node prisma/seed.ts"
+	},
+	"private": true,
 	"release": {
 		"branches": [
 			"main",
@@ -101,38 +98,41 @@
 				{
 					"assets": [
 						{
-							"path": "*.tgz",
-							"label": "Helm Chart"
+							"label": "Helm Chart",
+							"path": "*.tgz"
 						}
 					]
 				}
 			]
 		]
 	},
+	"scripts": {
+		"build": "next build",
+		"check": "pnpm run '/^check:.*/'",
+		"check:format": "prettier --check .",
+		"check:lint": "eslint --ext .tsx,.ts .",
+		"check:types": "tsc --pretty --noEmit",
+		"db:migrate": "prisma migrate deploy",
+		"db:reset": "prisma migrate reset --force",
+		"db:seed": "prisma db seed",
+		"dev": "prisma generate && next dev",
+		"dev:repl": "ts-node -r tsconfig-paths/register ./src/utils/repl.ts",
+		"docs:serve": "pnpm -C docs run start --no-open --port 3001",
+		"format": "prettier --write .",
+		"lint": "next lint",
+		"prepare": "husky install",
+		"start": "next start",
+		"start:prod": "pnpm run build && pnpm run start",
+		"test": "pnpm run '/^test:.*/'",
+		"test:components": "cypress run --component",
+		"test:e2e": "cypress run --e2e",
+		"test:unit": "jest",
+		"worker:webhooks": "ts-node -r tsconfig-paths/register ./src/executors/webhooks.ts"
+	},
 	"ts-node": {
 		"require": [
 			"tsconfig-paths/register"
 		]
 	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged",
-			"pre-push": "pnpm run test-all"
-		}
-	},
-	"prisma": {
-		"seed": "node --loader ts-node/esm prisma/seed.ts"
-	},
-	"lint-staged": {
-		"*.{js,jsx,ts,tsx}": [
-			"eslint --fix",
-			"prettier --write"
-		],
-		"*.{css,scss,less}": [
-			"prettier --write"
-		],
-		"*.{json,md,yml,yaml}": [
-			"prettier --write"
-		]
-	}
+	"version": "0.1.0"
 }
