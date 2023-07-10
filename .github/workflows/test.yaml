@@ -42,7 +42,9 @@ jobs:
         env:
           DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
           REDIS_URL: redis://redis:6379
-        run: corepack pnpm build
+        run: |
+          corepack pnpm prisma migrate
+          corepack pnpm build
 
   unit:
     name: Unit Tests

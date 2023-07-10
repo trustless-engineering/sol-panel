@@ -1,7 +1,5 @@
 #!/bin/sh
 
-[ "$SKIP_HUSKY" = "true" ] && exit 0
-
 . "$(git rev-parse --show-toplevel)/.husky/_/husky.sh"
 
 
