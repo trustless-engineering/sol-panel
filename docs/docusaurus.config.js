@@ -7,11 +7,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/synthwave84');
 const config = {
 	title: 'SOL Panel',
 	tagline: 'Open source Solana data pipeline platform',
-	trailingSlash: false,
+	trailingSlash: true,
 	favicon: 'img/favicon.ico',
 	url: 'https://solpanel.io',
 	baseUrl: '/',
-
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'throw',
 	i18n: {
@@ -25,6 +24,10 @@ const config = {
 			node: '20.2.0',
 		},
 	},
+	markdown: {
+		mermaid: true,
+	},
+	themes: ['@docusaurus/theme-mermaid'],
 	presets: [
 		[
 			'classic',
