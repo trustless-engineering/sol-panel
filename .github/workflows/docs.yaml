@@ -60,7 +60,7 @@ jobs:
         with:
           name: docs-output
           path: |
-            ./build
+            ./docs/build
   deploy:
     name: Deploy
     runs-on: ubuntu-22.04
@@ -71,7 +71,7 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
     needs: build
     steps:
-      - name: Download docs build
+      - name: Download a single artifact
         uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
         with:
           name: docs-output
@@ -80,4 +80,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@373f7f263a76c20808c831209c920827a82a2847 # v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./docs/build
