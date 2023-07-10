@@ -21,6 +21,8 @@ const config = {
 	customFields: {
 		requiredVersion: {
 			kubernetes: '1.26',
+			tilt: '0.33',
+			node: '20.2.0',
 		},
 	},
 	presets: [
