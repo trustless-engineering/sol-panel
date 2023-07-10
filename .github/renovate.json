@@ -1,7 +1,7 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
 	"extends": [
-		"config:base",
+		"config:recommended",
 		"replacements:all",
 		"workarounds:all",
 		":gitSignOff",
@@ -25,15 +25,13 @@
 	"reviewersFromCodeOwners": true,
 	"osvVulnerabilityAlerts": true,
 	"vulnerabilityAlerts": {
-    "addLabels": ["security"],
-    "automerge": true,
-    "assignees": ["@notwedtm"]
-  },
+		"addLabels": ["security"],
+		"automerge": true,
+		"assignees": ["@notwedtm"]
+	},
 	"lockFileMaintenance": {
 		"commitMessageAction": "Update",
-		"extends": [
-			"group:all"
-		],
+		"extends": ["group:all"],
 		"enabled": true,
 		"automerge": true,
 		"automergeType": "pr",
@@ -41,31 +39,25 @@
 	},
 	"separateMajorMinor": false,
 	"constraints": {
-		"node": {
-			"required": "20.2.0"
-		}
+		"packageRules": [
+			{
+				"matchCategories": ["node"],
+				"required": "20.2.0"
+			}
+		]
 	},
 	"packageRules": [
 		{
 			"description": "Update Linters",
-			"matchDepTypes": [
-				"devDependencies"
-			],
-			"addLabels": [
-				"linters"
-			],
-			"matchPackagePatterns": [
-				"lint",
-				"prettier"
-			],
+			"matchDepTypes": ["devDependencies"],
+			"addLabels": ["linters"],
+			"matchPackagePatterns": ["lint", "prettier"],
 			"automerge": true
 		},
 		{
 			"description": "Prevent 20.3.0",
 			"dependencyDashboardApproval": true,
-			"matchPackageNames": [
-				"node"
-			],
+			"matchPackageNames": ["node"],
 			"allowedVersions": "< 20.3.0"
 		}
 	]
