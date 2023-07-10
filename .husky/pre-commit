@@ -1,7 +1,5 @@
 #!/bin/sh
 
-[ "$SKIP_HUSKY" = "true" ] && exit 0
-
 . "$(git rev-parse --show-toplevel)/.husky/_/husky.sh"
 
 
@@ -39,20 +37,6 @@ pnpm run check:types ||
 
 # Check prisma 
 pnpm prisma validate
-
-# If everything passes... Now we can try to build
-echo '
-🤔🤔🤔🤔... Alright... Code looks good to me... Trying to build now. 🤔🤔🤔🤔
-'
-
-pnpm run build ||
-(
-    echo '
-    ❌👷🔨❌ Better call Bob... Because your build failed ❌👷🔨❌
-            Next build failed: View the errors above to see why. 
-    '
-    false;
-)
 
 # If everything passes... Now we can commit
 echo '

@@ -8,6 +8,44 @@ on:
       - next
 
 jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    container: node:20.2
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis
+    steps:
+      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Install dependencies
+        run: corepack pnpm install
+      - name: Build
+        env:
+          DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
+          REDIS_URL: redis://redis:6379
+        run: |
+          corepack pnpm prisma migrate dev
+          corepack pnpm build
+
   unit:
     name: Unit Tests
     runs-on: ubuntu-latest
@@ -23,3 +61,22 @@ jobs:
 
       - name: Run tests
         run: corepack pnpm test:unit
+
+  cypress-component:
+    name: Component Tests
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          record: true
+          component: true
+        env:
+          # pass the Cypress Cloud record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          # pass GitHub token to allow accurately detecting a build vs a re-run build
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
