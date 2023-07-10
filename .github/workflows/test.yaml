@@ -23,3 +23,14 @@ jobs:
 
       - name: Run tests
         run: corepack pnpm test:unit
+
+  cypress-component:
+    name: Component Tests
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          component: true
