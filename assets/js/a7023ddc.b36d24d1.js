@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksol_panel_docs=self.webpackChunksol_panel_docs||[]).push([[713],{3457:e=>{e.exports=JSON.parse('[{"label":"announcements","permalink":"/blog/tags/announcements","count":1}]')}}]);
