@@ -9,7 +9,7 @@ const config = {
 	tagline: 'Open source Solana data pipeline platform',
 	trailingSlash: false,
 	favicon: 'img/favicon.ico',
-	url: 'https://docs.solpanel.io',
+	url: 'https://solpanel.io',
 	baseUrl: '/',
 
 	onBrokenLinks: 'throw',
