@@ -1,7 +1,9 @@
-import Streams from 'models/streams';
+import { PrismaClient } from '@prisma/client';
 
 export default async function Home() {
-	const streams = await Streams.findMany({});
+	const prisma = new PrismaClient();
+
+	const streams = await prisma.stream.findMany();
 
 	return (
 		<div className='container'>

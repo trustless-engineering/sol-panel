@@ -9,10 +9,7 @@ interface WebhookSetupOptions extends SetupOptions {
 let consumer: Consumer;
 let options: WebhookSetupOptions;
 
-// TODO: This should actually pull from streams. We should lookup the stream and generate a new consumer group for it
-//
-
-const setup = async (opts: WebhookSetupOptions): Promise<void> => {
+async function setup(opts: WebhookSetupOptions) {
 	const { consumerId } = (options = opts);
 	const prisma = new PrismaClient();
 	consumer = await prisma.consumer.findFirstOrThrow({
@@ -20,9 +17,9 @@ const setup = async (opts: WebhookSetupOptions): Promise<void> => {
 			id: consumerId,
 		},
 	});
-};
+}
 
-const consume = async (): Promise<void> => {
+async function consume() {
 	const streamName = `webhooks:${consumer.id}`;
 	const currentId = '0';
 
@@ -44,6 +41,6 @@ const consume = async (): Promise<void> => {
 			return false;
 		},
 	});
-};
+}
 
 export { consume, setup };
