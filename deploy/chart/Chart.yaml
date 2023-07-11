@@ -26,7 +26,7 @@ appVersion: '0.0.0-bleeding.0'
 
 dependencies:
   - name: postgresql
-    version: 12.6.0
+    version: 12.6.5
     repository: https://charts.bitnami.com/bitnami
   - name: redis
     version: 17.11.7
