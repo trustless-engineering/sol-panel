@@ -1,10 +1,12 @@
-import Streams from 'models/streams';
+import { PrismaClient } from '@prisma/client';
 import Link from 'next/link';
 
 import { type Stream } from '@prisma/client';
 
 export default async function StreamsIndex() {
-	const streams = await Streams.findMany();
+	const prisma = new PrismaClient();
+
+	const streams = await prisma.stream.findMany();
 
 	return (
 		<div className='flex flex-col items-center m-4 justify-self-stretch'>

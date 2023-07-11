@@ -1,15 +1,7 @@
 import { type V1ConfigMap, type V1Deployment } from '@kubernetes/client-node';
-import { PrismaClient } from '@prisma/client';
+import { type Producer } from '@prisma/client';
 
-const prisma = new PrismaClient();
-
-export const buildProducerConfigMap = async (producerId: string): Promise<V1ConfigMap> => {
-	const producer = await prisma.producer.findUnique({ where: { id: producerId } });
-
-	if (!producer) {
-		throw new Error(`Producer ${producerId} not found`);
-	}
-
+export function buildProducerConfigMap(producer: Producer): V1ConfigMap {
 	return {
 		apiVersion: 'v1',
 		kind: 'ConfigMap',
@@ -22,18 +14,12 @@ export const buildProducerConfigMap = async (producerId: string): Promise<V1Conf
 			},
 		},
 		data: {
-			'producer.json': JSON.stringify(producer),
+			'producer.json': JSON.stringify(producer.config),
 		},
 	};
-};
+}
 
-export const buildProducerDeployment = async (producerId: string): Promise<V1Deployment> => {
-	const producer = await prisma.producer.findUnique({ where: { id: producerId } });
-
-	if (!producer) {
-		throw new Error(`Producer ${producerId} not found`);
-	}
-
+export function buildProducerDeployment(producer: Producer): V1Deployment {
 	return {
 		apiVersion: 'apps/v1',
 		kind: 'Deployment',
@@ -73,4 +59,4 @@ export const buildProducerDeployment = async (producerId: string): Promise<V1Dep
 			},
 		},
 	};
-};
+}

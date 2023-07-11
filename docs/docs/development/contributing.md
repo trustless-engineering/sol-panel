@@ -3,25 +3,22 @@ title: Contributing
 sidebar_position: 3
 ---
 
+## Summary
+
 SOL Panel is built by and for the community.
-It is designed to be integrated with the entire Solana ecosystem and thus requires a wide compatibility model.
-
 In persuit of this effort, we have configured the SOL Panel repo to be as useful as possible for contributors.
+The following requirements will help all contributors working with SOL Panel to start from a common set of opinionated standards.
 
-## Pre-Commit Checklist
+## Development
 
-Before committing, make sure you've run the following commands to ensure your PR is not rejected:
+We highly encourage you to use VS Code as many of the requirements listed in this doc are pre-configured in the `.vscode` folder.
+If you choose not to use VS Code, your editor of choice may have similar functionality.
 
-- `pnpm format` - runs eslint formatter
-- `pnpm lint-all` - runs all linters
+#### Husky
 
-## Commit
+Husky will automatically run formatting and linting checks prior to your commit (unless you add `--no-verify`).
+These will also be ran in the CI pipeline on pull requests, but running them pre-commit saves an extra commit
 
-:::tip
+## Pull Requests
 
-You must have Tilt running when commiting as the Husky hook will attempt to build
-a production build, and this requires database bindings to be present.
-
-:::
-
-Make sure you follow the proper commit message [format](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format).
+Pull request titles should be in the [Angular Semantic Commit format](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format).
