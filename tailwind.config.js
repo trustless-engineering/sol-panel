@@ -7,6 +7,15 @@ module.exports = {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
 			},
+			fontFamily: {
+				'fig-tree': ['Figtree', 'sans-serif'],
+			},
+			fontWeight: {
+				light: 400,
+				mid: 600,
+				heavy: 700,
+				maxHeavy: 800,
+			},
 		},
 	},
 	daisyui: {
